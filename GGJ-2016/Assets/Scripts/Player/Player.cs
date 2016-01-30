@@ -155,7 +155,6 @@ public class Player : Mobile {
         this.stocks--;
         if (stocks > 0)
         {
-            this.transform.position = GameManager.GetRespawnPosition();
             ActionFsm.ChangeState(new RespawnState(this, this.ActionFsm));
         }
     }
