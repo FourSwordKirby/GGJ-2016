@@ -83,6 +83,7 @@ public class PuzzleManager : MonoBehaviour {
         if (currentPuzzle.Status() == PuzzleStatus.SUCCESS)
         {
             progress++;
+            currentPuzzle.Cleanup();
             Destroy(currentPuzzle.gameObject);
             if(progress < puzzlesToComplete.Count)
                 currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
@@ -90,6 +91,7 @@ public class PuzzleManager : MonoBehaviour {
         else if(currentPuzzle.Status() == PuzzleStatus.FAIL)
         {
             progress++;
+            currentPuzzle.Cleanup();
             Destroy(currentPuzzle.gameObject);
             if (progress < puzzlesToComplete.Count)
                 currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
