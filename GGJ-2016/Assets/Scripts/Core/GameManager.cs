@@ -67,8 +67,6 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(Controls.GetDirection(0));
-
         /*ButtonCheck*/
         if (Controls.AInputDown(0))
             Debug.Log("P1 ATTACK");
@@ -83,6 +81,21 @@ public class GameManager : MonoBehaviour {
         if (Controls.ZInputDown(0))
             Debug.Log("P1 SUPER");
         if (Controls.pauseInputDown(0))
+            Debug.Log("PAUSE");
+
+        if (Controls.AInputDown(1))
+            Debug.Log("P2 ATTACK");
+        if (Controls.BInputDown(1))
+            Debug.Log("P2 SPECIAL");
+        if (Controls.YInputDown(1))
+            Debug.Log("P2 JUMP");
+        if (Controls.RInputDown(1))
+            Debug.Log("P2 SHIELD");
+        if (Controls.LInputDown(1))
+            Debug.Log("P2 ENHANCE");
+        if (Controls.ZInputDown(1))
+            Debug.Log("P2 SUPER");
+        if (Controls.pauseInputDown(1))
             Debug.Log("PAUSE");
     }
 
