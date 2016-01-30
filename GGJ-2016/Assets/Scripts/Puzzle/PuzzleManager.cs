@@ -8,10 +8,8 @@ public class PuzzleManager : MonoBehaviour {
     /// Attach all concrete Puzzles to a Prefab, and then link them here.
     /// This will let our manager spawn each puzzle as necessary.
     /// </summary>
-    /// 
-
     public List<Puzzle> puzzlesPrefabs = new List<Puzzle>();
-    public int initialPuzzleIndex = 0;
+    public int initialPuzzleIndex = -1;
 
     //Global Progress Properties
     public int puzzleCount;
@@ -47,24 +45,29 @@ public class PuzzleManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        List<Puzzle> puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
-        for (int i = 0; i < puzzleCount + remainingFailures; i++)
-        {
-            int puzzleIndex = Random.Range(0, puzzleSet.Count);
-            puzzlesToComplete.Add(puzzleSet[puzzleIndex]);
-            puzzleSet.RemoveAt(puzzleIndex);
-            if(puzzleSet.Count == 0)
-                puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
-        }
         progress = 0;
-
-        currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
-        /*use this to test specific puzzles later
-        if(puzzlesPrefabs.Count > initialPuzzleIndex)
+        if (initialPuzzleIndex >= 0)
         {
+            for (int i = 0; i < remainingFailures + 1; i++ )
+            {
+                puzzlesToComplete.Add(puzzlesPrefabs[initialPuzzleIndex]);
+            }
             currentPuzzle = SpawnPuzzle(puzzlesPrefabs[initialPuzzleIndex]);
         }
-         */
+        else
+        {
+            List<Puzzle> puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
+            for (int i = 0; i < puzzleCount + remainingFailures; i++)
+            {
+                int puzzleIndex = Random.Range(0, puzzleSet.Count);
+                puzzlesToComplete.Add(puzzleSet[puzzleIndex]);
+                puzzleSet.RemoveAt(puzzleIndex);
+                if (puzzleSet.Count == 0)
+                    puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
+            }
+            currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+        }
+
         Run();
 	}
 	
@@ -119,17 +122,11 @@ public class PuzzleManager : MonoBehaviour {
     /// </summary>
     private void GetInputs()
     {
-        // Hacky stuff
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            currentPuzzle.P1_ButA();
-        }
-
-        // Hacky stuff
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            currentPuzzle.P2_ButA();
-        }
+        // P2_A is mapped to .
+        // P2_B is mapped to /
+        
+        // P1_A is mapped to F
+        // P2_B is mapped to G
 
         // Player 1
         if(Controls.AInputDown(0))

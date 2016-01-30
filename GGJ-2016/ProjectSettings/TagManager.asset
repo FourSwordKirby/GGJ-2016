@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - InvisibleToPlayer
-  - Player
-  - 
-  - 
+  - NoPlayerTouch
+  - Players
+  - P1 ONLY
+  - P2 ONLY
   - 
   - 
   - 
