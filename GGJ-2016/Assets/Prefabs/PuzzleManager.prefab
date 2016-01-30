@@ -40,9 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlesPrefabs:
-  - {fileID: 11491258, guid: 3c337d33c8477eb48b68a94eb099ffcf, type: 2}
-  - {fileID: 11491258, guid: 3c337d33c8477eb48b68a94eb099ffcf, type: 2}
+  - {fileID: 11491258, guid: fec1b72be7db96b428c67aeeb7a00e22, type: 2}
+  - {fileID: 11491258, guid: fec1b72be7db96b428c67aeeb7a00e22, type: 2}
   - {fileID: 11497358, guid: 2a25ea0cc5b6b4044bf710a49e8d0295, type: 2}
+  - {fileID: 11400278, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+  initialPuzzleIndex: 3
+  puzzleCount: 0
+  remainingFailures: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
