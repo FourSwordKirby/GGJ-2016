@@ -9,13 +9,13 @@ public class PuzzleManager : MonoBehaviour {
     /// This will let our manager spawn each puzzle as necessary.
     /// </summary>
     public List<Puzzle> puzzlesPrefabs = new List<Puzzle>();
+    public int initialPuzzleIndex = 0;
 
     // Internal variables
     private Puzzle currentPuzzle;
     private bool run;
 
     // Public properties
-
     public float TimeRemaining
     {
         get
@@ -39,9 +39,9 @@ public class PuzzleManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        if(puzzlesPrefabs.Count > 0)
+        if(puzzlesPrefabs.Count > initialPuzzleIndex)
         {
-            currentPuzzle = SpawnPuzzle(puzzlesPrefabs[0]);
+            currentPuzzle = SpawnPuzzle(puzzlesPrefabs[initialPuzzleIndex]);
         }
         Run();
 	}

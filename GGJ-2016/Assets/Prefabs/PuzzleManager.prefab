@@ -41,6 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlesPrefabs:
   - {fileID: 11491258, guid: 3c337d33c8477eb48b68a94eb099ffcf, type: 2}
+  - {fileID: 11491258, guid: 3c337d33c8477eb48b68a94eb099ffcf, type: 2}
+  - {fileID: 11497358, guid: 2a25ea0cc5b6b4044bf710a49e8d0295, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
