@@ -19,26 +19,18 @@ public class DrumPuzzle : Puzzle {
 
     override public void P1_ButA()
     {
-        if (player2.isReady())
+        if (player1.playerStatus == DrumPuzzlePlayer.PlayerStatus.IDLE)
         {
-            beatsRemaining--;
-            player1.succeed();
-            player2.succeed();
-        }
-        else
             player1.trigger();
+        }
     }
 
     override public void P2_ButA()
     {
-        if (player1.isReady())
+        if (player2.playerStatus == DrumPuzzlePlayer.PlayerStatus.IDLE)
         {
-            beatsRemaining--;
-            player1.succeed();
-            player2.succeed();
+           player2.trigger();
         }
-        else
-            player2.trigger();
     }
 
     override public float GetTimeRemaining()
@@ -94,6 +86,18 @@ public class DrumPuzzle : Puzzle {
     override public void Execute()
     {
         timeRemaining -= Time.deltaTime;
+        if (player1.playerStatus == DrumPuzzlePlayer.PlayerStatus.PRIMED && player2.playerStatus == DrumPuzzlePlayer.PlayerStatus.PRIMED)
+        {
+            beatsRemaining--;
+            player1.succeed();
+            player2.succeed();
+        }
+
+        if (player1.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED || player2.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED)
+        {
+            player1.penalize();
+            player2.penalize();
+        }
     }
 
     /// <summary>

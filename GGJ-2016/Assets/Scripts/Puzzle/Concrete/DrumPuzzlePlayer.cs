@@ -2,70 +2,63 @@
 using System.Collections;
 
 public class DrumPuzzlePlayer : MonoBehaviour {
-    public float leniency;
-    private float leniencyTimer;
-
     public float penalty;
     private float penaltyTimer;
+
+    public enum PlayerStatus
+    {
+        IDLE,
+        PRIMED,
+        SUCCESS,
+        PENALIZED,
+        RECOVERING
+    }
+    public PlayerStatus playerStatus { get; private set; }
+    public void determineIfPenalized()
+    {
+        if (playerStatus != PlayerStatus.SUCCESS)
+        {
+            playerStatus = PlayerStatus.PENALIZED;
+        }
+    }
+
 
     /*references to components*/
     private Animator anim;
 
     void Awake()
     {
-        leniencyTimer = 0;
-        penaltyTimer = 0;
+        playerStatus = PlayerStatus.IDLE;
 
         this.anim = this.GetComponent<Animator>();
     }
 
-    void Start()
-    {
-    }
-
     public void trigger()
     {
-        if (leniencyTimer <= 0)
-        {
-            leniencyTimer = leniency;
-            anim.SetTrigger("Hit");
-        }
+        anim.SetTrigger("Hit");
     }
 
     public void succeed()
     {
-        leniencyTimer = 0;
+        playerStatus = PlayerStatus.SUCCESS;
         anim.SetTrigger("Succeed");
     }
 
-    public bool isReady()
+    public void penalize()
     {
-        return (leniencyTimer >= 0);
+        playerStatus = PlayerStatus.RECOVERING;
+        penaltyTimer = penalty;
+        anim.SetBool("Penalized", true);
     }
 
-    public bool isStunned()
+    public void Update()
     {
-        return (penaltyTimer > 0);
-    }
-
-    void Update()
-    {
-        if (leniencyTimer >= 0)
-        {
-            leniencyTimer -= Time.deltaTime;
-            if (leniencyTimer < 0)
-            {
-                penaltyTimer = penalty;
-                anim.SetBool("Penalized", true);
-            }
-        }
-
-        if (penaltyTimer >= 0)
+        if (penaltyTimer > 0)
         {
             penaltyTimer -= Time.deltaTime;
-            if (penaltyTimer < 0)
+            if (penaltyTimer <= 0)
             {
-                penaltyTimer = 0;
+                playerStatus = PlayerStatus.IDLE;
                 anim.SetBool("Penalized", false);
             }
         }
