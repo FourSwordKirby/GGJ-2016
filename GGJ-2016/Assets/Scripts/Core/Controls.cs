@@ -3,29 +3,29 @@ using System.Collections;
 
 public class Controls {
 
-    public static Vector2 getDirection(Player player)
+    public static Vector2 GetDirection(int playerNum)
     {
         float xAxis = 0;
         float yAxis = 0;
 
         Debug.Log(Input.GetAxis("P1 Horizontal"));
 
-        if (GameManager.Players.IndexOf(player) == 0)
+        if (playerNum == 0)
         {
             xAxis = Input.GetAxis("P1 Horizontal");
             yAxis = Input.GetAxis("P1 Vertical");
         }
-        else if (GameManager.Players.IndexOf(player) == 1)
+        else if (playerNum == 1)
         {
             xAxis = Input.GetAxis("P2 Horizontal");
             yAxis = Input.GetAxis("P2 Vertical");
         }
-        else if (GameManager.Players.IndexOf(player) == 2)
+        else if (playerNum == 2)
         {
             xAxis = Input.GetAxis("P3 Horizontal");
             yAxis = Input.GetAxis("P3 Vertical");
         }
-        else if (GameManager.Players.IndexOf(player) == 3)
+        else if (playerNum == 3)
         {
             xAxis = Input.GetAxis("P4 Horizontal");
             yAxis = Input.GetAxis("P4 Vertical");
@@ -33,186 +33,218 @@ public class Controls {
         return new Vector2(xAxis, yAxis);
     }
 
-    public static Parameters.InputDirection getInputDirection(Player player)
+    public static Parameters.InputDirection GetInputDirection(int playerNum)
     {
-        return Parameters.vectorToDirection(getDirection(player));
+        return Parameters.vectorToDirection(GetDirection(playerNum));
     }
 
-    public static bool jumpInputDown(Player player)
+    public static bool YInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Jump");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Jump");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Jump");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Jump");
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 Y");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 Y");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 Y");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 Y");
         else
             return false;
     }
 
-    public static bool attackInputDown(Player player)
+    public static bool XInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Attack");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Attack");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Attack");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Attack");
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 X");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 X");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 X");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 X");
         else
             return false;
     }
 
-    public static bool specialInputDown(Player player)
+    public static bool AInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Special");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Special");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Special");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Special");
+        if (playerNum == 0)
+        {
+            Debug.Log("what");
+            Debug.Log(Input.GetButtonDown("P1 A"));
+            return Input.GetButtonDown("P1 A");
+        }
+        else if (playerNum == 1)
+            return Input.GetButtonDown("P2 A");
+        else if (playerNum == 2)
+            return Input.GetButtonDown("P3 A");
+        else if (playerNum == 3)
+            return Input.GetButtonDown("P4 A");
         else
             return false;
     }
 
-    public static bool shieldInputDown(Player player)
+    public static bool BInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Shield");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Shield");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Shield");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Shield");
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 B");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 B");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 B");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 B");
         else
             return false;
     }
 
-    public static bool enhanceInputDown(Player player)
+    public static bool RInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Enhance");
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 R");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 R");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 R");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 R");
         else
             return false;
     }
 
-    public static bool superInputDown(Player player)
+    public static bool LInputDown(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButtonDown("P1 Super");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButtonDown("P2 Super");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButtonDown("P3 Super");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButtonDown("P4 Super");
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 L");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 L");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 L");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 L");
         else
             return false;
     }
 
-    public static bool pauseInputDown(Player player)
+    public static bool ZInputDown(int playerNum)
+    {
+        if (playerNum == 0)
+            return Input.GetButtonDown("P1 Z");
+        else if (playerNum == 1)           
+            return Input.GetButtonDown("P2 Z");
+        else if (playerNum == 2)           
+            return Input.GetButtonDown("P3 Z");
+        else if (playerNum == 3)           
+            return Input.GetButtonDown("P4 Z");
+        else
+            return false;
+    }
+
+    public static bool pauseInputDown(int playerNum)
     {
         return Input.GetButtonDown("Pause");
     }
 
 
-    public static bool jumpInputHeld(Player player)
+    public static bool YInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Jump");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Jump");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Jump");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Jump");
+        if (playerNum == 0)
+            return Input.GetButton("P1 Y");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 Y");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 Y");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 Y");
         else
             return false;
     }
 
-    public static bool attackInputHeld(Player player)
+    public static bool XInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Attack");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Attack");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Attack");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Attack");
+        if (playerNum == 0)
+            return Input.GetButton("P1 X");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 X");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 X");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 X");
         else
             return false;
     }
 
-    public static bool specialInputHeld(Player player)
+    public static bool AInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Special");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Special");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Special");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Special");
+        if (playerNum == 0)
+            return Input.GetButton("P1 A");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 A");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 A");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 A");
         else
             return false;
     }
 
-    public static bool shieldInputHeld(Player player)
+    public static bool BInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Shield");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Shield");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Shield");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Shield");
+        if (playerNum == 0)
+            return Input.GetButton("P1 B");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 B");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 B");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 B");
         else
             return false;
     }
 
-    public static bool enhanceInputHeld(Player player)
+    public static bool RInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Enhance");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Enhance");
+        if (playerNum == 0)
+            return Input.GetButton("P1 R");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 R");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 R");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 R");
         else
             return false;
     }
 
-    public static bool superInputHeld(Player player)
+    public static bool LInputHeld(int playerNum)
     {
-        if (GameManager.Players.IndexOf(player) == 0)
-            return Input.GetButton("P1 Super");
-        else if (GameManager.Players.IndexOf(player) == 1)
-            return Input.GetButton("P2 Super");
-        else if (GameManager.Players.IndexOf(player) == 2)
-            return Input.GetButton("P3 Super");
-        else if (GameManager.Players.IndexOf(player) == 3)
-            return Input.GetButton("P4 Super");
+        if (playerNum == 0)
+            return Input.GetButton("P1 L");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 L");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 L");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 L");
         else
             return false;
     }
 
-    public static bool pauseInputHeld(Player player)
+    public static bool ZInputHeld(int playerNum)
+    {
+        if (playerNum == 0)
+            return Input.GetButton("P1 Z");
+        else if (playerNum == 1)
+            return Input.GetButton("P2 Z");
+        else if (playerNum == 2)
+            return Input.GetButton("P3 Z");
+        else if (playerNum == 3)
+            return Input.GetButton("P4 Z");
+        else
+            return false;
+    }
+
+    public static bool pauseInputHeld(int playerNum)
     {
         return Input.GetButton("Pause");
     }

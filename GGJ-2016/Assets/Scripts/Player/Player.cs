@@ -108,6 +108,7 @@ public class Player : Mobile {
         this.ActionFsm.Execute();
 
         //Testing of the other buttons
+        /*
         if (Controls.attackInputDown(this))
         {
             GameObject newFireball = Instantiate(prefabs[0]);
@@ -118,6 +119,7 @@ public class Player : Mobile {
         if (Controls.specialInputDown(this))
         {
         }
+         */
 
 
         if (health <= 0)

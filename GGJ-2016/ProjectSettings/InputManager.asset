@@ -38,7 +38,7 @@ InputManager:
     axis: 1
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Jump
+    m_Name: P1 Y
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -54,7 +54,23 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Attack
+    m_Name: P1 X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: joystick 1 button 0
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: P1 A
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -70,7 +86,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Special
+    m_Name: P1 B
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -86,7 +102,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Shield
+    m_Name: P1 R
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -102,7 +118,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Enhance
+    m_Name: P1 L
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -118,7 +134,7 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
-    m_Name: P1 Super
+    m_Name: P1 Z
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -166,7 +182,7 @@ InputManager:
     axis: 1
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Jump
+    m_Name: P2 Y
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -182,7 +198,23 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Attack
+    m_Name: P2 X
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: space
+    altNegativeButton: 
+    altPositiveButton: joystick 2 button 0
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: P2 A
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -198,7 +230,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Special
+    m_Name: P2 B
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -214,7 +246,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Shield
+    m_Name: P2 R
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -230,7 +262,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Enhance
+    m_Name: P2 L
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -246,7 +278,7 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
-    m_Name: P2 Super
+    m_Name: P2 Z
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

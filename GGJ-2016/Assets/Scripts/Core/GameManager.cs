@@ -67,20 +67,22 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log(Controls.GetDirection(0));
+
         /*ButtonCheck*/
-        if (Controls.attackInputDown(Players[0]))
+        if (Controls.AInputDown(0))
             Debug.Log("P1 ATTACK");
-        if (Controls.specialInputDown(Players[0]))
+        if (Controls.BInputDown(0))
             Debug.Log("P1 SPECIAL");
-        if (Controls.jumpInputDown(Players[0]))
+        if (Controls.YInputDown(0))
             Debug.Log("P1 JUMP");
-        if (Controls.shieldInputDown(Players[0]))
+        if (Controls.RInputDown(0))
             Debug.Log("P1 SHIELD");
-        if (Controls.enhanceInputDown(Players[0]))
+        if (Controls.LInputDown(0))
             Debug.Log("P1 ENHANCE");
-        if (Controls.superInputDown(Players[0]))
+        if (Controls.ZInputDown(0))
             Debug.Log("P1 SUPER");
-        if (Controls.pauseInputDown(Players[0]))
+        if (Controls.pauseInputDown(0))
             Debug.Log("PAUSE");
     }
 

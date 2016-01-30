@@ -21,7 +21,7 @@ public class AirState : State<Player>
 
     override public void Execute()
     {
-        movementInputVector = Controls.getDirection(player);
+        //movementInputVector = Controls.getDirection(player);
 
         //Might want to change this stuff later to include transition states
         //Check if the player is grounded.
@@ -32,12 +32,12 @@ public class AirState : State<Player>
         }
 
         //Doing double jumps
-        if (Controls.jumpInputDown(player) && player.airJumps < player.maxAirJumps)
+        /*if (Controls.jumpInputDown(player) && player.airJumps < player.maxAirJumps)
         {
             player.airJumps++;
             player.selfBody.velocity = new Vector2(player.selfBody.velocity.x, player.jumpHeight);
             return;
-        }
+        }*/
 
         //Temporary measures until we get more animations.
         if (movementInputVector.x != 0)

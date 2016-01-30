@@ -17,7 +17,7 @@ public class IdleState : State<Player> {
 
     override public void Execute()
     {
-        Vector2 movementInputVector = Controls.getDirection(player);
+        Vector2 movementInputVector = Controls.GetDirection(0);
 
         //Might want to change this stuff later to include transition states
         //Moving
@@ -30,7 +30,7 @@ public class IdleState : State<Player> {
         }
 
         //Jumping
-        if (Controls.jumpInputDown(player))
+        if (Controls.YInputDown(0))
         {
             player.ActionFsm.ChangeState(new AirState(player, player.ActionFsm));
             return;

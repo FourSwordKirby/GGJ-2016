@@ -21,7 +21,7 @@ public class MovementState : State<Player> {
 
     override public void Execute()
     {
-        movementInputVector = Controls.getDirection(player);
+        movementInputVector = Controls.GetDirection(0);
 
         //Might want to change this stuff later to include transition states
         if (movementInputVector.x == 0)
@@ -30,7 +30,7 @@ public class MovementState : State<Player> {
             return;
         }
 
-        if (Controls.jumpInputDown(player) || !player.grounded)
+        if (Controls.YInputDown(0) || !player.grounded)
         {
             player.ActionFsm.ChangeState(new AirState(player, player.ActionFsm));
             return;
