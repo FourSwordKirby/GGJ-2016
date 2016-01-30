@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a994156a63ad241a0bee5b62fae5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlesPrefabs: []
+  puzzlesPrefabs:
+  - {fileID: 11491258, guid: 3c337d33c8477eb48b68a94eb099ffcf, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

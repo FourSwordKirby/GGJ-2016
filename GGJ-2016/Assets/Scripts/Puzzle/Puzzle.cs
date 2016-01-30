@@ -4,7 +4,7 @@ using System.Collections;
 public abstract class Puzzle : MonoBehaviour {
 
     // Player 1 controls
-    public void P1_ButA() { }
+    public virtual void P1_ButA() { }
     public void P1_ButB() { }
     public void P1_Direction(Vector2 dir) { }
 
