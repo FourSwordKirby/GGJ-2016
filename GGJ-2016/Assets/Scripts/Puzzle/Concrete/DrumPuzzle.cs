@@ -14,15 +14,31 @@ public class DrumPuzzle : Puzzle {
     public DrumPuzzlePlayer player1;
     public DrumPuzzlePlayer player2;
 
-    public float penalty;
-    private float penaltyTimer;
-
     private bool P1_PRESSED;
     private bool P2_PRESSED;
 
     override public void P1_ButA()
     {
+        if (player2.isReady())
+        {
+            beatsRemaining--;
+            player1.succeed();
+            player2.succeed();
+        }
+        else
+            player1.trigger();
+    }
 
+    override public void P2_ButA()
+    {
+        if (player1.isReady())
+        {
+            beatsRemaining--;
+            player1.succeed();
+            player2.succeed();
+        }
+        else
+            player2.trigger();
     }
 
     override public float GetTimeRemaining()
@@ -57,7 +73,6 @@ public class DrumPuzzle : Puzzle {
     {
         timeRemaining = timeLimit;
         beatsRemaining = beatsGoal;
-        penaltyTimer = 0;
         //Initialize position of players?
         //Initialize some stats?
     }
@@ -79,7 +94,6 @@ public class DrumPuzzle : Puzzle {
     override public void Execute()
     {
         timeRemaining -= Time.deltaTime;
-        penaltyTimer -= Time.deltaTime;
     }
 
     /// <summary>
