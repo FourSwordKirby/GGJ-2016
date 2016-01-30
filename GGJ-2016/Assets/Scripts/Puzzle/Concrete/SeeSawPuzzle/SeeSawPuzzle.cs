@@ -30,11 +30,7 @@ public class SeeSawPuzzle : Puzzle {
     private Weight rightWeight;
     private Rigidbody2D rightBody;
     private Rigidbody2D seeSawBody;
-
-    void Start() { Setup(); }
-    void Update() { Execute(); }
-    void FixedUpdate() { FixedExecute(); }
-
+    
 
     public override void Setup()
     {
@@ -69,6 +65,7 @@ public class SeeSawPuzzle : Puzzle {
         // Save camera positions then move both to our camera point.
         camPosition = this.transform.FindChild("Camera Point").position;
         cam1 = GameObject.Find("P1 Camera").GetComponent<Camera>();
+        Debug.Log("Cam position" + cam1.transform.position);
         oldCam1Pos = cam1.transform.position;
         cam1.transform.position = camPosition;
         cam2 = GameObject.Find("P2 Camera").GetComponent<Camera>();

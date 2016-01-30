@@ -169,6 +169,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e718b59c2ffa384b9fe11cca41fad75, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1081708112
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 457184, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9e73b683a927d8a40bf89e86f8aed6a6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1456592674
 Prefab:
   m_ObjectHideFlags: 0
@@ -210,6 +252,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
       propertyPath: initialPuzzleIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzleCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: remainingFailures
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
