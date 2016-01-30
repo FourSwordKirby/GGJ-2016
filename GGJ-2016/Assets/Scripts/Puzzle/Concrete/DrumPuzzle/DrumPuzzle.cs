@@ -65,6 +65,11 @@ public class DrumPuzzle : Puzzle {
     {
         timeRemaining = timeLimit;
         beatsRemaining = beatsGoal;
+        Vector3 camPosition = this.transform.FindChild("Camera Point").position;
+        Camera cam1 = GameObject.Find("P1 Camera").GetComponent<Camera>();
+        cam1.transform.position = camPosition;
+        Camera cam2 = GameObject.Find("P2 Camera").GetComponent<Camera>();
+        cam2.transform.position = camPosition;
         //Initialize position of players?
         //Initialize some stats?
     }
