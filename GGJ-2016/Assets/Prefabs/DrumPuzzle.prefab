@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 10
-  beatsGoal: 1
+  beatsGoal: 2
   player1: {fileID: 11416464}
   player2: {fileID: 11435252}
 --- !u!114 &11435252
@@ -233,6 +233,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: penalty
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: beatsGoal
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

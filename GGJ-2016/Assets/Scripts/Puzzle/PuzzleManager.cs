@@ -8,8 +8,16 @@ public class PuzzleManager : MonoBehaviour {
     /// Attach all concrete Puzzles to a Prefab, and then link them here.
     /// This will let our manager spawn each puzzle as necessary.
     /// </summary>
+    /// 
+
     public List<Puzzle> puzzlesPrefabs = new List<Puzzle>();
     public int initialPuzzleIndex = 0;
+
+    //Global Progress Properties
+    public int puzzleCount;
+    public int remainingFailures;
+    private List<Puzzle> puzzlesToComplete = new List<Puzzle>();
+    private int progress;
 
     // Internal variables
     private Puzzle currentPuzzle;
@@ -39,10 +47,24 @@ public class PuzzleManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        List<Puzzle> puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
+        for (int i = 0; i < puzzleCount + remainingFailures; i++)
+        {
+            int puzzleIndex = Random.Range(0, puzzleSet.Count);
+            puzzlesToComplete.Add(puzzleSet[puzzleIndex]);
+            puzzleSet.RemoveAt(puzzleIndex);
+            if(puzzleSet.Count == 0)
+                puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
+        }
+        progress = 0;
+
+        currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+        /*use this to test specific puzzles later
         if(puzzlesPrefabs.Count > initialPuzzleIndex)
         {
             currentPuzzle = SpawnPuzzle(puzzlesPrefabs[initialPuzzleIndex]);
         }
+         */
         Run();
 	}
 	
@@ -55,6 +77,30 @@ public class PuzzleManager : MonoBehaviour {
         }
         GetInputs();
         currentPuzzle.Execute();
+        if (currentPuzzle.Status() == PuzzleStatus.SUCCESS)
+        {
+            progress++;
+            Destroy(currentPuzzle.gameObject);
+            if(progress < puzzlesToComplete.Count)
+                currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+        }
+        else if(currentPuzzle.Status() == PuzzleStatus.FAIL)
+        {
+            progress++;
+            Destroy(currentPuzzle.gameObject);
+            if (progress < puzzlesToComplete.Count)
+                currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+            remainingFailures--;
+        }
+
+        if (progress == puzzlesToComplete.Count-remainingFailures)
+        {
+            Debug.Log("YOU WIN");
+        }
+        if (remainingFailures == 0)
+        {
+            Debug.Log("YOU LOSE");
+        }
 	}
 
     void FixedUpdate()
