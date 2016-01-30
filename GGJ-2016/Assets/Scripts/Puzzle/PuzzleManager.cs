@@ -79,6 +79,12 @@ public class PuzzleManager : MonoBehaviour {
             currentPuzzle.P1_ButA();
         }
 
+        // Hacky stuff
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            currentPuzzle.P2_ButA();
+        }
+
         // Player 1
         if(Controls.AInputDown(0))
         {

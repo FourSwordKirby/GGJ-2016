@@ -8,10 +8,19 @@ public class DrumPuzzlePlayer : MonoBehaviour {
     public float penalty;
     private float penaltyTimer;
 
+    /*references to components*/
+    private Animator anim;
+
     void Awake()
     {
         leniencyTimer = 0;
         penaltyTimer = 0;
+
+        this.anim = this.GetComponent<Animator>();
+    }
+
+    void Start()
+    {
     }
 
     public void trigger()
@@ -19,17 +28,19 @@ public class DrumPuzzlePlayer : MonoBehaviour {
         if (leniencyTimer <= 0)
         {
             leniencyTimer = leniency;
+            anim.SetTrigger("Hit");
         }
     }
 
     public void succeed()
     {
         leniencyTimer = 0;
+        anim.SetTrigger("Succeed");
     }
 
     public bool isReady()
     {
-        return (leniencyTimer > 0);
+        return (leniencyTimer >= 0);
     }
 
     public bool isStunned()
@@ -39,24 +50,24 @@ public class DrumPuzzlePlayer : MonoBehaviour {
 
     void Update()
     {
-        if (leniencyTimer > 0)
+        if (leniencyTimer >= 0)
         {
             leniencyTimer -= Time.deltaTime;
-            if (leniencyTimer <= 0)
+            if (leniencyTimer < 0)
             {
                 penaltyTimer = penalty;
+                anim.SetBool("Penalized", true);
             }
         }
 
-        if (penaltyTimer > 0)
+        if (penaltyTimer >= 0)
         {
             penaltyTimer -= Time.deltaTime;
-            if (penaltyTimer <= 0)
+            if (penaltyTimer < 0)
             {
                 penaltyTimer = 0;
+                anim.SetBool("Penalized", false);
             }
         }
     }
-
-
 }
