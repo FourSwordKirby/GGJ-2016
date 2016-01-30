@@ -69,11 +69,7 @@ public class Controls {
     public static bool AInputDown(int playerNum)
     {
         if (playerNum == 0)
-        {
-            Debug.Log("what");
-            Debug.Log(Input.GetButtonDown("P1 A"));
             return Input.GetButtonDown("P1 A");
-        }
         else if (playerNum == 1)
             return Input.GetButtonDown("P2 A");
         else if (playerNum == 2)

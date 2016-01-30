@@ -5,13 +5,13 @@ public abstract class Puzzle : MonoBehaviour {
 
     // Player 1 controls
     public virtual void P1_ButA() { }
-    public void P1_ButB() { }
-    public void P1_Direction(Vector2 dir) { }
+    public virtual void P1_ButB() { }
+    public virtual void P1_Direction(Vector2 dir) { }
 
     // Player 2 controls
-    public void P2_ButA() { }
-    public void P2_ButB() { }
-    public void P2_Direction(Vector2 dir) { }
+    public virtual void P2_ButA() { }
+    public virtual void P2_ButB() { }
+    public virtual void P2_Direction(Vector2 dir) { }
 
     // These are abstract functions.
     // Each puzzle _might_ have different notions of how to calculate
