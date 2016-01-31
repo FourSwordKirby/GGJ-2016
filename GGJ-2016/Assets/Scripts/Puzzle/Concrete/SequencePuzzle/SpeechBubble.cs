@@ -22,7 +22,7 @@ public class SpeechBubble : MonoBehaviour {
 	public void Init()
     {
         anim = GetComponent<Animator>();
-        inputSprite = this.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+        inputSprite = this.transform.GetChild(0).FindChild("Input").GetComponent<SpriteRenderer>();
     }
 	
     public void Display(char letter)
