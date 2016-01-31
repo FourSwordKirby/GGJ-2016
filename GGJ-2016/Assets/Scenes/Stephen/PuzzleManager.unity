@@ -170,19 +170,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: initialPuzzleIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 108736, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: puzzlesPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 11429816, guid: 4163e4b5f0477df49a12bef7b9e92195,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
   m_IsPrefabParent: 0
