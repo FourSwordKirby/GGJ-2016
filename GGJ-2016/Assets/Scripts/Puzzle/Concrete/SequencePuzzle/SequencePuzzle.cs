@@ -57,6 +57,7 @@ public class SequencePuzzle : Puzzle {
             sequence.Add(LEGAL_LETTERS[Random.Range(0, 6)]);
         }
         inputCorrect = false;
+        sequence[0] = 'A';
 
         // Bubbles
         p1bubble = this.transform.FindChild("P1 Bubble").GetComponent<SpeechBubble>();
@@ -75,7 +76,6 @@ public class SequencePuzzle : Puzzle {
         // Save camera positions then move both to our camera point.
         camPosition = this.transform.FindChild("Camera Point").position;
         cam1 = GameObject.Find("P1 Camera").GetComponent<Camera>();
-        Debug.Log("Cam position" + cam1.transform.position);
         oldCam1Pos = cam1.transform.position;
         cam1.transform.position = camPosition;
         cam2 = GameObject.Find("P2 Camera").GetComponent<Camera>();
@@ -105,17 +105,17 @@ public class SequencePuzzle : Puzzle {
                 {
                     HideBubble(turn);
                     turn = (turn + 1) % 2;
+                    sequence.RemoveAt(0);
                     if (sequence.Count == 0)
                     {
                         status = PuzzleStatus.SUCCESS;
+                        return;
                     }
                     else
                     {
                         inputCorrect = false;
                     }
-                    sequence.RemoveAt(0);
                     ShowBubble(turn, sequence[0]);
-                    Debug.Log("Swapped");
                     pointer.PointAt(turn);
                 }
             }
@@ -152,7 +152,6 @@ public class SequencePuzzle : Puzzle {
         }
         else
         {
-            Debug.Log("Hide p2");
             p2bubble.Hide();
         }
     }
@@ -177,7 +176,10 @@ public class SequencePuzzle : Puzzle {
     {
         if (turn == 0)
         {
-            inputCorrect = IsCorrectDirection(dir);
+            if(IsCorrectDirection(dir))
+            {
+                inputCorrect = true;
+            }
         }
     }
 
@@ -235,7 +237,10 @@ public class SequencePuzzle : Puzzle {
     {
         if (turn == 1)
         {
-            inputCorrect = IsCorrectDirection(dir);
+            if (IsCorrectDirection(dir))
+            {
+                inputCorrect = true;
+            }
         }
     }
 

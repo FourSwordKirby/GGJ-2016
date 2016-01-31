@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f300e7796ffc0ff4d8e3837b87fc8bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSequenceLength: 12
+  totalSequenceLength: 6
   timeLimit: 10
 --- !u!114 &11422690
 MonoBehaviour:

@@ -48,11 +48,11 @@ public class SpeechBubble : MonoBehaviour {
                 inputSprite.sprite = JoyDown;
                 break;
         }
-        anim.SetTrigger("Display");
+        anim.SetBool("Hidden", false);
     }
 
     public void Hide()
     {
-        anim.SetTrigger("Hide");
+        anim.SetBool("Hidden", true);
     }
 }
