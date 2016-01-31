@@ -16,12 +16,14 @@ public class ApplePuzzle : Puzzle {
 
     override public void P1_ButA()
     {
-        player1.trigger();
+        if(player1.playerStatus == ApplePuzzlePlayer.PlayerStatus.READY)
+            player1.trigger();
     }
 
     override public void P2_ButA()
     {
-        player2.trigger();
+        if (player2.playerStatus == ApplePuzzlePlayer.PlayerStatus.READY)
+            player2.trigger();
     }
 
     override public float GetTimeRemaining()
@@ -101,8 +103,7 @@ public class ApplePuzzle : Puzzle {
     /// </summary>
     override public PuzzleStatus Status()
     {
-        int beatsRemaining = 1;
-        if (beatsRemaining == 0)
+        if (player1.playerStatus == ApplePuzzlePlayer.PlayerStatus.PRIMED && player2.playerStatus == ApplePuzzlePlayer.PlayerStatus.PRIMED)
         {
             return PuzzleStatus.SUCCESS;
         }
