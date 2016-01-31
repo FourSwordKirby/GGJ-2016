@@ -136,4 +136,27 @@ public class DrumPuzzle : Puzzle {
             return PuzzleStatus.INPROGRESS;
         }
     }
+    
+    private const string INSTRUCTIONS = "Drum together!";
+    private const string CONTROLS = "A";
+
+    public override string GetP1Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP2Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP1Controls()
+    {
+        return CONTROLS;
+    }
+
+    public override string GetP2Controls()
+    {
+        return CONTROLS;
+    }
 }

@@ -7,11 +7,15 @@ public class WindPuzzle : Puzzle {
 
     public float timeLimit;
     private float timeRemaining;
+    private PuzzleStatus status;
 
     public FallerPlayer fallingPlayer;
     public WindPlayer windPlayer;
     public GameObject catcher;
     private Collider2D catcherBounds;
+
+    private CameraControls cam1;
+    private CameraControls cam2;
 
     override public void P1_Direction(Vector2 dir)
     {
@@ -66,10 +70,12 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public void Setup()
     {
+        status = PuzzleStatus.INPROGRESS;
+
         timeRemaining = timeLimit;
-        CameraControls cam1 = GameObject.Find("P1 Camera").GetComponent<CameraControls>();
+        cam1 = GameObject.Find("P1 Camera").GetComponent<CameraControls>();
         cam1.Target(fallingPlayer.GetTarget());
-        CameraControls cam2 = GameObject.Find("P2 Camera").GetComponent<CameraControls>();
+        cam2 = GameObject.Find("P2 Camera").GetComponent<CameraControls>();
         cam2.Target(fallingPlayer.GetTarget());
 
         catcherBounds = catcher.GetComponent<Collider2D>();
@@ -83,7 +89,8 @@ public class WindPuzzle : Puzzle {
     override public void Cleanup()
     {
         Time.timeScale = 1.0f;
-        Debug.Log("puzzle finished, should I ramp up the level of this puzzle?");
+        cam1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        cam2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     /// <summary>
@@ -92,10 +99,23 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public void Execute()
     {
-        timeRemaining -= Time.deltaTime;
-        if (fallingPlayer.transform.position.y - catcher.transform.position.y < 20)
+        if(status == PuzzleStatus.INPROGRESS)
         {
-            Time.timeScale = 0.5f;
+            timeRemaining -= Time.deltaTime;
+            if (fallingPlayer.transform.position.y - catcher.transform.position.y < 20)
+            {
+                Time.timeScale = 0.5f;
+            }
+            if (timeRemaining < 0 || fallingPlayer.transform.position.y < catcher.transform.position.y - 2.0f)
+            {
+                Time.timeScale = 1.0f;
+                status = PuzzleStatus.FAIL;
+            }
+            else if (fallingPlayer.colBody.bounds.Intersects(catcherBounds.bounds))
+            {
+                Time.timeScale = 1.0f;
+                status = PuzzleStatus.SUCCESS;
+            }
         }
     }
 
@@ -117,15 +137,26 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public PuzzleStatus Status()
     {
-        if (timeRemaining < 0)
-        {
-            return PuzzleStatus.FAIL;
-        }
-        else if(fallingPlayer.colBody.bounds.Intersects(catcherBounds.bounds))
-        {
-            return PuzzleStatus.SUCCESS;
-        }
-        else
-            return PuzzleStatus.INPROGRESS;
+        return status;
+    }
+
+    public override string GetP1Instructions()
+    {
+        return "Make it to your lover!";
+    }
+
+    public override string GetP2Instructions()
+    {
+        return "Create wind to help!";
+    }
+
+    public override string GetP1Controls()
+    {
+        return "LR";
+    }
+
+    public override string GetP2Controls()
+    {
+        return "A";
     }
 }

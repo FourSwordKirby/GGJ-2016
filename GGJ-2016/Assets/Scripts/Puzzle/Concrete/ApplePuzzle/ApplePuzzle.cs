@@ -119,4 +119,27 @@ public class ApplePuzzle : Puzzle {
     {
         return status;
     }
+    
+    private const string INSTRUCTIONS = "Splash the water together!";
+    private const string CONTROLS = "A";
+
+    public override string GetP1Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP2Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP1Controls()
+    {
+        return CONTROLS;
+    }
+
+    public override string GetP2Controls()
+    {
+        return CONTROLS;
+    }
 }

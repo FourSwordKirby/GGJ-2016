@@ -53,6 +53,8 @@ public class PuzzleManager : MonoBehaviour
     void Start()
     {
         progress = 0;
+        uiManager = GameObject.FindObjectOfType<UIManager>();
+
         if (initialPuzzleIndex >= 0)
         {
             List<Puzzle> puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
@@ -75,8 +77,7 @@ public class PuzzleManager : MonoBehaviour
             }
             currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
         }
-
-        uiManager = GameObject.FindObjectOfType<UIManager>();
+        SetupCurrentPuzzle();
 
         Run();
         TransitionManager.Instance.SetScreenEmpty();
@@ -97,7 +98,6 @@ public class PuzzleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Break time");
             if(breakTime <= 0.0f)
             {
                 breakTime = breakDuration;
@@ -123,6 +123,7 @@ public class PuzzleManager : MonoBehaviour
                     if (progress < puzzlesToComplete.Count)
                     {
                         currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+                        SetupCurrentPuzzle();
                     }
                     if (currentPuzzle.Status() == PuzzleStatus.FAIL)
                     {
@@ -140,6 +141,13 @@ public class PuzzleManager : MonoBehaviour
         {
             Debug.Log("YOU LOSE");
         }
+    }
+
+    private void SetupCurrentPuzzle()
+    {
+        currentPuzzle.Setup();
+        uiManager.SetInstructionsAndControls(0, currentPuzzle.GetP1Instructions(), currentPuzzle.GetP1Controls());
+        uiManager.SetInstructionsAndControls(1, currentPuzzle.GetP2Instructions(), currentPuzzle.GetP2Controls());
     }
 
     void FixedUpdate()
@@ -191,7 +199,6 @@ public class PuzzleManager : MonoBehaviour
     {
         Puzzle newPuzzle = GameObject.Instantiate<Puzzle>(p);
         newPuzzle.transform.SetParent(this.transform);
-        newPuzzle.Setup();
         return newPuzzle;
     }
 

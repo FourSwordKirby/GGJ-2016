@@ -35,9 +35,18 @@ public abstract class Puzzle : MonoBehaviour {
     {
         return "DO THINGS!";
     }
+    virtual public string GetP1Controls()
+    {
+        return "";
+    }
+
     virtual public string GetP2Instructions()
     {
         return "DO THINGS!";
+    }
+    virtual public string GetP2Controls()
+    {
+        return "";
     }
 
     /// <summary>

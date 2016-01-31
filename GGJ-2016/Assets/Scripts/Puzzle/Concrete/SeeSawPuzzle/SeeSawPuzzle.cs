@@ -4,6 +4,9 @@ using System.Collections;
 public class SeeSawPuzzle : Puzzle {
 
     private const string PUZZLE_NAME = "See Saw Puzzle";
+    private const string INSTRUCTIONS = "Keep it balanced!";
+    private const string CONTROLS = "LR";
+
     private const int DIFFICULTY = 1;
     private const float TIME_LIMIT = 7.0f;
     private const float PLAYER_SPEED = 12.0f;
@@ -187,5 +190,25 @@ public class SeeSawPuzzle : Puzzle {
     {
         good = false;
         playerDied = true;
+    }
+
+    public override string GetP1Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP2Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP1Controls()
+    {
+        return CONTROLS;
+    }
+
+    public override string GetP2Controls()
+    {
+        return CONTROLS;
     }
 }

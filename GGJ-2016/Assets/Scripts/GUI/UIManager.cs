@@ -22,6 +22,19 @@ public class UIManager : MonoBehaviour {
         p2.SetTime(time);
     }
 
+    public void SetInstructionsAndControls(int playerNum, string instr, string controls)
+    {
+        if(playerNum == 0)
+        {
+            p1.SetInstructions(instr);
+            p1.SetControls(controls);
+        }
+        else
+        {
+            p2.SetInstructions(instr);
+            p2.SetControls(controls);
+        }
+    }
 
     public void PlaySuccessAnimation()
     {

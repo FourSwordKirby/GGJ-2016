@@ -243,5 +243,26 @@ public class SequencePuzzle : Puzzle {
             }
         }
     }
+    private const string INSTRUCTIONS = "Converse!";
+    private const string CONTROLS = "ABUDLR";
 
+    public override string GetP1Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP2Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP1Controls()
+    {
+        return CONTROLS;
+    }
+
+    public override string GetP2Controls()
+    {
+        return CONTROLS;
+    }
 }

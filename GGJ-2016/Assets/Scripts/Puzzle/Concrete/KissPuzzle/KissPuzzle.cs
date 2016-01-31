@@ -3,8 +3,9 @@ using System.Collections;
 
 public class KissPuzzle : Puzzle
 {
-   //Need to hit a drum x number of times within some constrained time frame
-   //Every error leads to a small stunned penalty
+    private const string PUZZLE_NAME = "Kiss";
+    private const string INSTRUCTIONS = "Kiss!";
+    private const string CONTROLS = "A";
 
     public float timeLimit;
 
@@ -51,7 +52,7 @@ public class KissPuzzle : Puzzle
     /// </summary>
     override public string GetName()
     {
-        return "Kiss";
+        return "See Saw Puzzle";
     }
 
     /// <summary>
@@ -147,6 +148,26 @@ public class KissPuzzle : Puzzle
     override public PuzzleStatus Status()
     {
         return status;
+    }
+    
+    public override string GetP1Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP2Instructions()
+    {
+        return INSTRUCTIONS;
+    }
+
+    public override string GetP1Controls()
+    {
+        return CONTROLS;
+    }
+
+    public override string GetP2Controls()
+    {
+        return CONTROLS;
     }
 }
 
