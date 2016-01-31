@@ -156,10 +156,14 @@ public class PuzzleManager : MonoBehaviour
 
         if (progress == puzzlesToComplete.Count - remainingFailures && !transitionGuard)
         {
+            transitionGuard = true;
+            run = false;
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("VictoryScene"));
         }
         if (remainingFailures == 0 && !transitionGuard)
         {
+            transitionGuard = true;
+            run = false;
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("GameOverScene"));
         }
     }

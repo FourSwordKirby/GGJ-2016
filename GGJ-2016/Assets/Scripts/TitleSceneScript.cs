@@ -5,7 +5,7 @@ public class TitleSceneScript : MonoBehaviour {
 
     private bool transitionGuard = false;
 
-    private float loopTimer = 20;
+    private float loopTimer = 38;
 
     private float P1_Leeway = 0.05f;
     private float P2_Leeway = 0.05f;
@@ -34,15 +34,15 @@ public class TitleSceneScript : MonoBehaviour {
 
         if (P1_timer > 0 && P2_timer > 0 && !transitionGuard)
         {
+            Destroy(GameObject.FindObjectOfType<IntroMusic>().gameObject);
             TransitionManager.Instance.FadeToDark(() => Application.LoadLevel("TutorialScene"));
-            Destroy(GameObject.FindObjectOfType<IntroMusic>());
             transitionGuard = true;
         }
 
         if (loopTimer <= 0 && !transitionGuard)
         {
+            Destroy(GameObject.FindObjectOfType<IntroMusic>().gameObject);
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("IntroScene"));
-            Destroy(GameObject.FindObjectOfType<IntroMusic>());
             transitionGuard = true;
         }
 

@@ -380,6 +380,14 @@ Prefab:
       propertyPath: puzzleCount
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzleSuccessClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 097402400882f4129a57c71304cf9d76, type: 3}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzleFailClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3583496a31e79470d9101cd208186540, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
   m_IsPrefabParent: 0
