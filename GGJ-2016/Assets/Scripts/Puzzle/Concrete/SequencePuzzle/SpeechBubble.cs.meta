@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 768f5ef6e31fbaf4ea2e966f9b461522
+timeCreated: 1454215298
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - ButtonA: {fileID: 21300000, guid: 7674940dcb2420344889797aeaee6ce8, type: 3}
+  - ButtonB: {fileID: 21300000, guid: 3c1bc030aaae663489c06fa08c8fb930, type: 3}
+  - JoyUp: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d, type: 3}
+  - JoyRight: {fileID: 21300000, guid: 14b1d78cd63928b4883057f0ee87a4c6, type: 3}
+  - JoyDown: {fileID: 21300000, guid: a2cc0b381199c4543a0631adc05c00db, type: 3}
+  - JoyLeft: {fileID: 21300000, guid: 1110288b6faadce44b66f826f9dab288, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

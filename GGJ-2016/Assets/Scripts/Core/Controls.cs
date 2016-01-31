@@ -5,10 +5,9 @@ public class Controls {
 
     public static float THRESHOLD = 0.8f;
 
-    public static Parameters.InputDirection GetCardinalDirection(int playerNum)
+    public static Parameters.InputDirection ToCardinalDirection(Vector2 dir)
     {
-        Vector2 dir = GetDirection(playerNum);
-        if(dir.x > THRESHOLD)
+        if (dir.x > THRESHOLD)
         {
             return Parameters.InputDirection.East;
         }
@@ -20,7 +19,7 @@ public class Controls {
         {
             return Parameters.InputDirection.North;
         }
-        else if(dir.y < -THRESHOLD)
+        else if (dir.y < -THRESHOLD)
         {
             return Parameters.InputDirection.South;
         }
@@ -28,6 +27,12 @@ public class Controls {
         {
             return Parameters.InputDirection.Stop;
         }
+    }
+
+    public static Parameters.InputDirection GetCardinalDirection(int playerNum)
+    {
+        Vector2 dir = GetDirection(playerNum);
+        return ToCardinalDirection(dir);
     }
 
     public static Vector2 GetDirection(int playerNum)

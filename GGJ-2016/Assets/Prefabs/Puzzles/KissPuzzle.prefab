@@ -121,7 +121,7 @@ GameObject:
   - 95: {fileID: 9522264}
   - 114: {fileID: 11491462}
   m_Layer: 0
-  m_Name: P2
+  m_Name: P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ GameObject:
   - 95: {fileID: 9504142}
   - 114: {fileID: 11498542}
   m_Layer: 0
-  m_Name: P1
+  m_Name: P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

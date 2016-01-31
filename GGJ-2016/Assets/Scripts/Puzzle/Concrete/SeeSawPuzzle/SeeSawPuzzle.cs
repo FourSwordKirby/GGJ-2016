@@ -87,7 +87,6 @@ public class SeeSawPuzzle : Puzzle {
     public override void Cleanup()
     {
         // Restore cameras
-        Debug.Log("Restoring cams");
         cam1.transform.position = oldCam1Pos;
         cam2.transform.position = oldCam2Pos;
     }
