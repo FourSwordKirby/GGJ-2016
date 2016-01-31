@@ -32,13 +32,15 @@ public class Apple : MonoBehaviour
         }
 
         this.selfBody.velocity = Vector3.zero;
-        this.selfBody.drag = 5.0f;
+        this.selfBody.drag = 18.0f;
     }
 
     void Update()
     {
         if (decaying)
         {
+            SpriteRenderer selfSprite = this.GetComponent<SpriteRenderer>();
+            selfSprite.color = new Color(1.0f, decayTime / 1, decayTime / 1, decayTime / 1);
             decayTime -= decayRate * Time.deltaTime;
             if (decayTime < 0)
                 decaying = false;

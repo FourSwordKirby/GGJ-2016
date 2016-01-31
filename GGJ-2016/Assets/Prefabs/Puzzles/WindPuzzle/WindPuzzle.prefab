@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 404342}
   - 50: {fileID: 5090698}
-  - 114: {fileID: 11477438}
   - 114: {fileID: 11477298}
   m_Layer: 0
   m_Name: Obstacles
@@ -276,23 +275,6 @@ MonoBehaviour:
   xUpperRange: 10
   yUpperRange: 80
   obstacleCount: 5
---- !u!114 &11477438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc0dbe636e18f3647a16920600a543a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 174676, guid: c7b001d1de3771a439d7d4cf5826dc97, type: 2}
-  xLowerRange: 0
-  yLowerRange: 0
-  xUpperRange: 0
-  yUpperRange: 0
-  obstacleCount: 0
 --- !u!114 &11483668
 MonoBehaviour:
   m_ObjectHideFlags: 1
