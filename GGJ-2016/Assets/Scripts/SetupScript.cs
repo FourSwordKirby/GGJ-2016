@@ -9,6 +9,8 @@ public class SetupScript : MonoBehaviour {
     private GameObject[] p1stuff;
     private GameObject[] p2stuff;
 
+    private bool transitionGuard = false;
+
     void Start()
     {
         p1stuff = new GameObject[6];
@@ -129,9 +131,10 @@ public class SetupScript : MonoBehaviour {
                 break;
         }
 
-        if(p1status < 0 && p2status < 0)
+        if(p1status < 0 && p2status < 0 && !transitionGuard)
         {
-            TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("PlaytestScene"));
+            TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("IntroScene"));
+            transitionGuard = true;
         }
 	}
 }
