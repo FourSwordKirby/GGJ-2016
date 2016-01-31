@@ -157,6 +157,10 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: -400
       objectReference: {fileID: 0}
+    - target: {fileID: 11472018, guid: 2e718b59c2ffa384b9fe11cca41fad75, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e718b59c2ffa384b9fe11cca41fad75, type: 2}
   m_IsPrefabParent: 0
@@ -231,6 +235,10 @@ Prefab:
     - target: {fileID: 22400832, guid: cec615c7be57ad94b8d8a88120915749, type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 11451700, guid: cec615c7be57ad94b8d8a88120915749, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cec615c7be57ad94b8d8a88120915749, type: 2}
@@ -376,18 +384,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: puzzleCount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: puzzleSuccessClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 097402400882f4129a57c71304cf9d76, type: 3}
-    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
-      propertyPath: puzzleFailClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3583496a31e79470d9101cd208186540, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
   m_IsPrefabParent: 0
