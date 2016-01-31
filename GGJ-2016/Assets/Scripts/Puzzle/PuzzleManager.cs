@@ -127,6 +127,7 @@ public class PuzzleManager : MonoBehaviour
                 }
                 else
                 {
+                    remainingFailures--;
 					puzzleFailSound.Play ();
                     uiManager.PlayFailAnimation();
                 }
@@ -145,10 +146,6 @@ public class PuzzleManager : MonoBehaviour
                     {
                         currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
                         SetupCurrentPuzzle();
-                    }
-                    if (currentPuzzle.Status() == PuzzleStatus.FAIL)
-                    {
-                        remainingFailures--;
                     }
                 }
             }

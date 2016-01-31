@@ -23,16 +23,18 @@ public class TitleSceneScript : MonoBehaviour {
 
 	void Update ()
     {
-        if (Controls.AInputDown(0) && P1_timer <= 0)
+        /*
+        if (Controls.AInputHeld(0) && P1_timer <= 0)
         {
             P1_timer = P1_Leeway;
         }
-        if (Controls.BInputDown(1) && P2_timer <= 0)
+        if (Controls.BInputHeld(1) && P2_timer <= 0)
         {
             P2_timer = P2_Leeway;
         }
+        */
 
-        if (P1_timer > 0 && P2_timer > 0 && !transitionGuard)
+        if (Controls.AInputHeld(0) && Controls.BInputHeld(1) && !transitionGuard)
         {
             Destroy(GameObject.FindObjectOfType<IntroMusic>().gameObject);
             TransitionManager.Instance.FadeToDark(() => Application.LoadLevel("TutorialScene"));
