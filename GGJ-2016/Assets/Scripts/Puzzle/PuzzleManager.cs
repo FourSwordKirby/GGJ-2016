@@ -79,6 +79,7 @@ public class PuzzleManager : MonoBehaviour
         uiManager = GameObject.FindObjectOfType<UIManager>();
 
         Run();
+        TransitionManager.Instance.SetScreenEmpty();
     }
 
     // Update is called once per frame
