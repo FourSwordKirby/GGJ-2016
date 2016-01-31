@@ -24,7 +24,16 @@ public class KissPuzzlePlayer : MonoBehaviour {
     public PlayerStatus playerStatus { get; private set; }
 
     /*references to components*/
-    private Animator anim;
+	private Animator anim;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
 
     void Start()
     {
@@ -58,6 +67,7 @@ public class KissPuzzlePlayer : MonoBehaviour {
     public void Penalize()
     {
         playerStatus = PlayerStatus.PENALIZED;
+		this.transform.parent.GetComponent<KissPuzzle> ().kissFailSound.Play ();
         anim.SetTrigger("Penalize");
         penaltyTimer = PENALTY_DURATION;
     }

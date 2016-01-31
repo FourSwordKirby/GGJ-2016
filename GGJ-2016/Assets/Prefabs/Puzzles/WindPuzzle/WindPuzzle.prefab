@@ -310,7 +310,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 5.5, y: 6}
+  m_Size: {x: 15.95, y: 6}
 --- !u!61 &6186508
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -356,7 +356,7 @@ MonoBehaviour:
   P1Color: {r: 0.8921161, g: 0.86407876, b: 0.9632353, a: 1}
   P2Color: {r: 1, g: 1, b: 0.5294118, a: 1}
   assignment: 0
-  steeringAbility: 15
+  steeringAbility: 10
   maxAcceleration: 9.8
   terminalVelocity: 25
   cameraPosition: {fileID: 128470}
@@ -504,7 +504,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: steeringAbility
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190036}

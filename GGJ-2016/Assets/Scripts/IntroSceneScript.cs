@@ -16,7 +16,6 @@ public class IntroSceneScript : MonoBehaviour {
         if (Controls.AInputDown(0) || Controls.AInputDown(1) ||
             Controls.BInputDown(0) || Controls.BInputDown(1))
         {
-            Debug.Log("hello");
             sceneTransition();
         }
 	}

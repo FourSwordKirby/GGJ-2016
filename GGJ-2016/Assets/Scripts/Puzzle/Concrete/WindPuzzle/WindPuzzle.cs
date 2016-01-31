@@ -20,6 +20,22 @@ public class WindPuzzle : Puzzle {
     private float oldCam1Size;
     private float oldCam2Size;
 
+	public AudioClip windClip;
+	private AudioSource windSound;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
+	public void Awake() {
+		this.windSound = this.makeAudioSource (this.windClip, 0.3f);
+	}
+
     override public void P1_Direction(Vector2 dir)
     {
         if (fallingPlayer.assignment == FallerPlayer.PlayerAssignment.P1)
@@ -34,13 +50,17 @@ public class WindPuzzle : Puzzle {
 
     override public void P1_ButA()
     {
-        if(windPlayer.assignment == WindPlayer.PlayerAssignment.P2)
-            windPlayer.trigger();
+		if (windPlayer.assignment == WindPlayer.PlayerAssignment.P2) {
+			windPlayer.trigger ();
+			this.windSound.Play ();
+		}
     }
     override public void P2_ButA()
     {
-        if (windPlayer.assignment == WindPlayer.PlayerAssignment.P2)
-            windPlayer.trigger();
+		if (windPlayer.assignment == WindPlayer.PlayerAssignment.P2) {
+			windPlayer.trigger ();
+			this.windSound.Play ();
+		}
     }
 
     override public float GetTimeRemaining()

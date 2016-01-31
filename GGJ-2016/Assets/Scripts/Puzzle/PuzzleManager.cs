@@ -24,6 +24,12 @@ public class PuzzleManager : MonoBehaviour
     private int progress;
     private float breakTime;
 
+	// Audio effects
+	public AudioClip puzzleSuccessClip;
+	public AudioClip puzzleFailClip;
+	private AudioSource puzzleSuccessSound;
+	private AudioSource puzzleFailSound;
+
     private bool transitionGuard;
     // Public properties
     public float TimeRemaining
@@ -44,12 +50,23 @@ public class PuzzleManager : MonoBehaviour
     // Other object references
     private UIManager uiManager;
 
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
     void Awake()
     {
         transitionGuard = false;
         TransitionManager.Instance.SetScreenEmpty();
         run = false;
         breakTime = -1.0f;
+		puzzleSuccessSound = makeAudioSource (puzzleSuccessClip, 1.0f);
+		puzzleFailSound = makeAudioSource (puzzleFailClip, 1.0f);
     }
 
     // Use this for initialization
@@ -105,10 +122,13 @@ public class PuzzleManager : MonoBehaviour
                 breakTime = breakDuration;
                 if (currentPuzzle.Status() == PuzzleStatus.SUCCESS)
                 {
+					puzzleSuccessSound.Play ();
                     uiManager.PlaySuccessAnimation();
                 }
                 else
                 {
+                    remainingFailures--;
+					puzzleFailSound.Play ();
                     uiManager.PlayFailAnimation();
                 }
             }
@@ -127,20 +147,20 @@ public class PuzzleManager : MonoBehaviour
                         currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
                         SetupCurrentPuzzle();
                     }
-                    if (currentPuzzle.Status() == PuzzleStatus.FAIL)
-                    {
-                        remainingFailures--;
-                    }
                 }
             }
         }
 
         if (progress == puzzlesToComplete.Count - remainingFailures && !transitionGuard)
         {
+            transitionGuard = true;
+            run = false;
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("VictoryScene"));
         }
         if (remainingFailures == 0 && !transitionGuard)
         {
+            transitionGuard = true;
+            run = false;
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("GameOverScene"));
         }
     }
