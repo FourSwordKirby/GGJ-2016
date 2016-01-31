@@ -10,6 +10,8 @@ public class WindPuzzle : Puzzle {
 
     public FallerPlayer fallingPlayer;
     public WindPlayer windPlayer;
+    public GameObject catcher;
+    private Collider2D catcherBounds;
 
     override public void P1_Direction(Vector2 dir)
     {
@@ -54,7 +56,7 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public string GetName()
     {
-        return "Apples";
+        return "Wind";
     }
 
     /// <summary>
@@ -66,9 +68,11 @@ public class WindPuzzle : Puzzle {
     {
         timeRemaining = timeLimit;
         CameraControls cam1 = GameObject.Find("P1 Camera").GetComponent<CameraControls>();
-        cam1.Target(fallingPlayer.gameObject);
+        cam1.Target(fallingPlayer.GetTarget());
         CameraControls cam2 = GameObject.Find("P2 Camera").GetComponent<CameraControls>();
-        cam2.Target(fallingPlayer.gameObject);
+        cam2.Target(fallingPlayer.GetTarget());
+
+        catcherBounds = catcher.GetComponent<Collider2D>();
     }
 
     /// <summary>
@@ -78,6 +82,7 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public void Cleanup()
     {
+        Time.timeScale = 1.0f;
         Debug.Log("puzzle finished, should I ramp up the level of this puzzle?");
     }
 
@@ -88,6 +93,10 @@ public class WindPuzzle : Puzzle {
     override public void Execute()
     {
         timeRemaining -= Time.deltaTime;
+        if (fallingPlayer.transform.position.y - catcher.transform.position.y < 20)
+        {
+            Time.timeScale = 0.5f;
+        }
     }
 
     /// <summary>
@@ -108,6 +117,15 @@ public class WindPuzzle : Puzzle {
     /// </summary>
     override public PuzzleStatus Status()
     {
-        return PuzzleStatus.INPROGRESS;
+        if (timeRemaining < 0)
+        {
+            return PuzzleStatus.FAIL;
+        }
+        else if(fallingPlayer.colBody.bounds.Intersects(catcherBounds.bounds))
+        {
+            return PuzzleStatus.SUCCESS;
+        }
+        else
+            return PuzzleStatus.INPROGRESS;
     }
 }
