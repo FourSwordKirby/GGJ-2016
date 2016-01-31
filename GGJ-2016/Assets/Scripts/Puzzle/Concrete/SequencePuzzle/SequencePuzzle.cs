@@ -25,6 +25,24 @@ public class SequencePuzzle : Puzzle {
     private Camera cam1;
     private Camera cam2;
 
+	public AudioClip dooLowClip;
+	public AudioClip dooHighClip;
+	private AudioSource dooLowSound;
+	private AudioSource dooHighSound;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
+	public void Awake() {
+		this.dooLowSound = this.makeAudioSource (this.dooLowClip, 1.0f);
+		this.dooHighSound = this.makeAudioSource (this.dooHighClip, 1.0f);
+	}
 
     public override float GetTimeRemaining()
     {
@@ -160,15 +178,17 @@ public class SequencePuzzle : Puzzle {
     {
         if(turn == 0 && sequence[0] == 'A')
         {
-            inputCorrect = true;
+			inputCorrect = true;
+			this.dooHighSound.Play ();
         }
     }
 
     public override void P1_ButB()
     {
         if (turn == 0 && sequence[0] == 'B')
-        {
-            inputCorrect = true;
+		{
+			inputCorrect = true;
+			this.dooHighSound.Play ();
         }
     }
 
@@ -177,8 +197,9 @@ public class SequencePuzzle : Puzzle {
         if (turn == 0)
         {
             if(IsCorrectDirection(dir))
-            {
-                inputCorrect = true;
+			{
+				inputCorrect = true;
+				this.dooHighSound.Play ();
             }
         }
     }
@@ -221,7 +242,8 @@ public class SequencePuzzle : Puzzle {
     {
         if (turn == 1 && sequence[0] == 'A')
         {
-            inputCorrect = true;
+			inputCorrect = true;
+			this.dooLowSound.Play ();
         }
     }
 
@@ -229,7 +251,8 @@ public class SequencePuzzle : Puzzle {
     {
         if (turn == 1 && sequence[0] == 'B')
         {
-            inputCorrect = true;
+			inputCorrect = true;
+			this.dooLowSound.Play ();
         }
     }
 
@@ -239,7 +262,8 @@ public class SequencePuzzle : Puzzle {
         {
             if (IsCorrectDirection(dir))
             {
-                inputCorrect = true;
+				inputCorrect = true;
+				this.dooLowSound.Play ();
             }
         }
     }
