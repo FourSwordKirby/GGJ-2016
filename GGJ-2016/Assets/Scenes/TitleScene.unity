@@ -264,16 +264,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1 &729358326
+--- !u!1 &561266004
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 729358327}
-  - 222: {fileID: 729358329}
-  - 114: {fileID: 729358328}
+  - 224: {fileID: 561266005}
+  - 222: {fileID: 561266007}
+  - 114: {fileID: 561266006}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -281,12 +281,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &729358327
+--- !u!224 &561266005
 RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729358326}
+  m_GameObject: {fileID: 561266004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -295,22 +295,22 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.500119, y: -67.20005}
-  m_SizeDelta: {x: 188.9, y: 89.6}
+  m_AnchoredPosition: {x: -15.999654, y: -145.00003}
+  m_SizeDelta: {x: 295, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &729358328
+--- !u!114 &561266006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729358326}
+  m_GameObject: {fileID: 561266004}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -324,19 +324,19 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 200
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press B at the same time as your partner
---- !u!222 &729358329
+  m_Text: Tell your partner to press A once you press a button
+--- !u!222 &561266007
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729358326}
+  m_GameObject: {fileID: 561266004}
 --- !u!1001 &955830200
 Prefab:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 729358327}
+  - {fileID: 561266005}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -561,8 +561,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.5, y: -67.2}
-  m_SizeDelta: {x: 188.9, y: 89.6}
+  m_AnchoredPosition: {x: -16, y: -145}
+  m_SizeDelta: {x: 295, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417861196
 MonoBehaviour:
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -590,13 +590,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 200
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press A at the same time as your partner
+  m_Text: Tell your partner to press B once you press a button
 --- !u!222 &1417861197
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -243,7 +243,7 @@ public class SequencePuzzle : Puzzle {
             }
         }
     }
-    private const string INSTRUCTIONS = "Converse!";
+    private const string INSTRUCTIONS = "Strike up a conversation!";
     private const string CONTROLS = "ABUDLR";
 
     public override string GetP1Instructions()

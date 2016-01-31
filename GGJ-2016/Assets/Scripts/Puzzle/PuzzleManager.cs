@@ -24,6 +24,7 @@ public class PuzzleManager : MonoBehaviour
     private int progress;
     private float breakTime;
 
+    private bool transitionGuard;
     // Public properties
     public float TimeRemaining
     {
@@ -45,6 +46,8 @@ public class PuzzleManager : MonoBehaviour
 
     void Awake()
     {
+        transitionGuard = false;
+        TransitionManager.Instance.SetScreenEmpty();
         run = false;
         breakTime = -1.0f;
     }
@@ -80,7 +83,6 @@ public class PuzzleManager : MonoBehaviour
         SetupCurrentPuzzle();
 
         Run();
-        TransitionManager.Instance.SetScreenEmpty();
     }
 
     // Update is called once per frame
@@ -133,11 +135,11 @@ public class PuzzleManager : MonoBehaviour
             }
         }
 
-        if (progress == puzzlesToComplete.Count - remainingFailures)
+        if (progress == puzzlesToComplete.Count - remainingFailures && !transitionGuard)
         {
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("VictoryScene"));
         }
-        if (remainingFailures == 0)
+        if (remainingFailures == 0 && !transitionGuard)
         {
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("GameOverScene"));
         }

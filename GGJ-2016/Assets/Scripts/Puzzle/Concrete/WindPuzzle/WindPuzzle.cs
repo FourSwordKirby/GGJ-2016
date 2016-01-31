@@ -162,7 +162,7 @@ public class WindPuzzle : Puzzle {
 
     public override string GetP1Instructions()
     {
-        return "Make it to your lover!";
+        return "Make it to your partner!";
     }
 
     public override string GetP2Instructions()

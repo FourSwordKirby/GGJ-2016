@@ -153,7 +153,7 @@ public class DrumPuzzle : Puzzle {
         }
     }
     
-    private const string INSTRUCTIONS = "Drum together!";
+    private const string INSTRUCTIONS = "Hit on the same beat!";
     private const string CONTROLS = "A";
 
     public override string GetP1Instructions()
