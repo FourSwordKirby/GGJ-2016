@@ -24,6 +24,7 @@ public class ApplePuzzlePlayer : MonoBehaviour {
     public void trigger()
     {
         apple.Drop();
+		this.transform.parent.GetComponent<ApplePuzzle> ().dropSound.Play ();
         this.playerStatus = PlayerStatus.WAITING;
         anim.SetTrigger("Release");
     }

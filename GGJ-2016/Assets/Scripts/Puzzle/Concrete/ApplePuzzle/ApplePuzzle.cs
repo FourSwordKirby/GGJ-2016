@@ -14,7 +14,26 @@ public class ApplePuzzle : Puzzle {
     private bool P1_PRESSED;
     private bool P2_PRESSED;
 
-    private PuzzleStatus status;
+	private PuzzleStatus status;
+
+	public AudioClip dropClip;
+	public AudioClip splashClip;
+	public AudioSource dropSound;
+	public AudioSource splashSound;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
+	public void Awake() {
+		this.dropSound = this.makeAudioSource (this.dropClip, 0.6f);
+		this.splashSound = this.makeAudioSource (this.splashClip, 1.0f);
+	}
 
     override public void P1_ButA()
     {

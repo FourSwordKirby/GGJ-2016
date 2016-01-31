@@ -35,7 +35,7 @@ public class DrumPuzzle : Puzzle {
 	}
 
 	public void Awake() {
-		this.drumFailSound = this.makeAudioSource (this.drumFailClip, 0.8f);
+		this.drumFailSound = this.makeAudioSource (this.drumFailClip, 0.5f);
 		this.drumSuccessSound = this.makeAudioSource (this.drumSuccessClip, 0.8f);
 	}
 

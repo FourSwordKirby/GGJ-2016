@@ -33,6 +33,7 @@ public class Apple : MonoBehaviour
 
         this.selfBody.velocity = Vector3.zero;
         this.selfBody.drag = 18.0f;
+		this.transform.parent.parent.GetComponent<ApplePuzzle> ().splashSound.Play ();
     }
 
     void Update()

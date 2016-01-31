@@ -40,8 +40,8 @@ public class SequencePuzzle : Puzzle {
 	}
 
 	public void Awake() {
-		this.dooLowSound = this.makeAudioSource (this.dooLowClip, 1.0f);
-		this.dooHighSound = this.makeAudioSource (this.dooHighClip, 1.0f);
+		this.dooLowSound = this.makeAudioSource (this.dooLowClip, 0.8f);
+		this.dooHighSound = this.makeAudioSource (this.dooHighClip, 0.8f);
 	}
 
     public override float GetTimeRemaining()
