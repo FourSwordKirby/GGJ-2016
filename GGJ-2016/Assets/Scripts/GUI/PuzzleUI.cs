@@ -19,7 +19,7 @@ public class PuzzleUI : MonoBehaviour {
     private Text instr;
     private Heart[] hearts;
 
-    void Start()
+    void Awake()
     {
         timerText = this.transform.FindChild("TimerUI").GetComponent<Text>();
         anim = this.transform.FindChild("Result").GetComponent<Animator>();
@@ -34,11 +34,19 @@ public class PuzzleUI : MonoBehaviour {
 
     public void SetInstructions(string str)
     {
+        if (!instr)
+        {
+            instr = this.transform.FindChild("Instructions").GetComponent<Text>();
+        }
         instr.text = str;
     }
 
     public void SetControls(string str)
     {
+        if (!controls)
+        {
+            controls = this.transform.FindChild("Controls").GetComponent<RectTransform>();
+        }
         foreach (Transform t in controls.transform)
         {
             Destroy(t.gameObject);
