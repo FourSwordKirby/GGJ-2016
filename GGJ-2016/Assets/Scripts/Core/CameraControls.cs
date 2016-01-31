@@ -7,11 +7,10 @@ public class CameraControls : MonoBehaviour {
 
     private Camera cameraComponent;
 
-    public float zoomSpeed = 20f;
-    public float maxZoomFOV = 10f;
+    public GameObject target;
 
     /* camera moving constants */
-    private const float Z_OFFSET = -10;
+    private const float Z_OFFSET = -10.0f;
 
     /* A bunch of stuff that relates to how the camera shakes*/
     public enum ShakePresets
@@ -45,6 +44,22 @@ public class CameraControls : MonoBehaviour {
             else
                 applyShake();
         }
+
+        //Following a target
+        //Now follow the target
+        Debug.Log("Offset" + new Vector3(0, 0, Z_OFFSET));
+        Debug.Log("targetting pos" + target.transform.position + new Vector3(0, 0, Z_OFFSET));
+        Debug.Log("my pos" + transform.position);
+        if (target != null && transform.position != target.transform.position + new Vector3(0, 0, Z_OFFSET))
+        {
+            float x = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).x;
+            float y = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).y;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(x * PAN_SPEED, y * PAN_SPEED);
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity.Set(0.0f, 0.0f);
+        }
 	}
 
     public void Shake(float Intensity = 0.05f, 
@@ -60,6 +75,12 @@ public class CameraControls : MonoBehaviour {
         shakeComplete = OnComplete;
 		shakeDirection = Direction;
         shakeOffset.Set(0, 0);
+    }
+
+    public void Target(GameObject target)
+    {
+        this.target = target;
+        this.gameObject.transform.position = target.transform.position + new Vector3(0, 0, Z_OFFSET);
     }
 
     private void stopShaking()

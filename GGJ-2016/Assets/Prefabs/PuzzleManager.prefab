@@ -47,6 +47,7 @@ MonoBehaviour:
   initialPuzzleIndex: -1
   puzzleCount: 20
   remainingFailures: 3
+  breakDuration: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
