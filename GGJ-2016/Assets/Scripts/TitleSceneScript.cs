@@ -35,12 +35,14 @@ public class TitleSceneScript : MonoBehaviour {
         if (P1_timer > 0 && P2_timer > 0 && !transitionGuard)
         {
             TransitionManager.Instance.FadeToDark(() => Application.LoadLevel("TutorialScene"));
+            Destroy(GameObject.FindObjectOfType<IntroMusic>());
             transitionGuard = true;
         }
 
         if (loopTimer <= 0 && !transitionGuard)
         {
             TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("IntroScene"));
+            Destroy(GameObject.FindObjectOfType<IntroMusic>());
             transitionGuard = true;
         }
 

@@ -28,6 +28,8 @@ public class FallerPlayer : MonoBehaviour
 
     public GameObject cameraPosition;
 
+
+    private float steerModifier;
     private float idealDrag;
 
     /*references to components*/
@@ -47,6 +49,7 @@ public class FallerPlayer : MonoBehaviour
         arrow = this.transform.FindChild("Arrow").GetComponent<SpriteRenderer>();
         catcher = this.transform.parent.FindChild("Catcher").transform;
 
+        steerModifier = 1.0f;
         idealDrag = maxAcceleration / terminalVelocity;
         idealDrag = idealDrag / (idealDrag * Time.fixedDeltaTime + 1);
         selfBody.drag = idealDrag;
@@ -54,7 +57,7 @@ public class FallerPlayer : MonoBehaviour
 
     public void steer(Vector2 direction)
     {
-        this.selfBody.AddForce(new Vector2(direction.x * steeringAbility, 0));
+        this.selfBody.AddForce(new Vector2(direction.x * steeringAbility * steerModifier, 0));
     }
 
     public void succeed()
@@ -69,6 +72,7 @@ public class FallerPlayer : MonoBehaviour
 
     void Update()
     {
+        steerModifier = 1.0f - Mathf.Abs(this.selfBody.velocity.y / terminalVelocity);
         if(assignment == PlayerAssignment.P1)
         {
             sprite.color = P1Color;

@@ -135,11 +135,11 @@ public class PuzzleManager : MonoBehaviour
 
         if (progress == puzzlesToComplete.Count - remainingFailures)
         {
-            Debug.Log("YOU WIN");
+            TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("VictoryScene"));
         }
         if (remainingFailures == 0)
         {
-            Debug.Log("YOU LOSE");
+            TransitionManager.Instance.FadeToWhite(() => Application.LoadLevel("GameOverScene"));
         }
     }
 

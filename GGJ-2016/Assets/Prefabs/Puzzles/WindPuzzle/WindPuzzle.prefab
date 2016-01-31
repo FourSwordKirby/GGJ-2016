@@ -379,7 +379,7 @@ MonoBehaviour:
   yLowerRange: 15
   xUpperRange: 10
   yUpperRange: 80
-  obstacleCount: 5
+  obstacleCount: 10
 --- !u!114 &11483668
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,7 +6,7 @@ public class WindPuzzle : Puzzle {
     private const float CATCHER_RADIUS = 10.0f;
 
     public float timeLimit;
-    private float cameraSize = 6.0f;
+    private float cameraSize = 20.0f;
     private float timeRemaining;
     private PuzzleStatus status;
 
@@ -121,7 +121,7 @@ public class WindPuzzle : Puzzle {
         if(status == PuzzleStatus.INPROGRESS)
         {
             timeRemaining -= Time.deltaTime;
-            if (fallingPlayer.transform.position.y - catcher.transform.position.y < 20)
+            if (fallingPlayer.transform.position.y - catcher.transform.position.y < 35)
             {
                 Time.timeScale = 0.5f;
             }
@@ -133,6 +133,7 @@ public class WindPuzzle : Puzzle {
             else if (fallingPlayer.colBody.bounds.Intersects(catcherBounds.bounds))
             {
                 Time.timeScale = 1.0f;
+                fallingPlayer.selfBody.isKinematic = true;
                 status = PuzzleStatus.SUCCESS;
             }
         }

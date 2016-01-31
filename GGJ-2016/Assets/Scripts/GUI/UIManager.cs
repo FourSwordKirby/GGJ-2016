@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour {
     private PuzzleUI p2;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         p1 = GameObject.Find("P1 Camera").GetComponentInChildren<PuzzleUI>();
         p2 = GameObject.Find("P2 Camera").GetComponentInChildren<PuzzleUI>();
 	}
