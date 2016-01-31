@@ -13,6 +13,7 @@ GameObject:
   - 124: {fileID: 12418694}
   - 81: {fileID: 8162732}
   - 114: {fileID: 11449170}
+  - 50: {fileID: 5061824}
   m_Layer: 0
   m_Name: P1 Camera
   m_TagString: MainCamera
@@ -138,6 +139,23 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!50 &5061824
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134722}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!81 &8162732
 AudioListener:
   m_ObjectHideFlags: 1
@@ -240,8 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7872055bdb89bd43a248f3c58ff0f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 20
-  maxZoomFOV: 10
+  target: {fileID: 0}
 --- !u!114 &11451700
 MonoBehaviour:
   m_ObjectHideFlags: 1
