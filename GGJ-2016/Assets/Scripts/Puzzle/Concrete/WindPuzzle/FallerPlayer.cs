@@ -19,19 +19,32 @@ public class FallerPlayer : MonoBehaviour
     }
     public PlayerStatus playerStatus { get; private set; }
 
+    public float steeringAbility;
+    public float maxAcceleration;
+    public float terminalVelocity;
+
+    public GameObject cameraPosition;
+
+    private float idealDrag;
+
     /*references to components*/
     public Animator anim;
     public Rigidbody2D selfBody;
+    public Collider2D colBody;
 
     void Awake()
     {
         this.anim = this.GetComponent<Animator>();
         this.selfBody = this.GetComponent<Rigidbody2D>();
+        this.colBody = this.GetComponent<Collider2D>();
+
+        idealDrag = maxAcceleration / terminalVelocity;
+        selfBody.drag = idealDrag / (idealDrag * Time.fixedDeltaTime + 1);
     }
 
     public void steer(Vector2 direction)
     {
-        this.transform.position += new Vector3(direction.x, direction.y, 0);
+        this.selfBody.AddForce(new Vector2(direction.x * steeringAbility, 0));
     }
 
     public void succeed()
@@ -46,5 +59,10 @@ public class FallerPlayer : MonoBehaviour
 
     void Update()
     {
+    }
+
+    public GameObject GetTarget()
+    {
+        return cameraPosition;
     }
 }

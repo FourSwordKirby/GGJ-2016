@@ -49,9 +49,9 @@ public class CameraControls : MonoBehaviour {
         //Now follow the target
         if (target != null && transform.position != target.transform.position + new Vector3(0, 0, Z_OFFSET))
         {
-            float x = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).x;
+            //float x = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).x;
             float y = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).y;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(x * PAN_SPEED, y * PAN_SPEED);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0/*x * PAN_SPEED*/, y * PAN_SPEED);
         }
         else
         {
