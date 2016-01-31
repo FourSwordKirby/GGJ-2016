@@ -14,11 +14,30 @@ public class DrumPuzzle : Puzzle {
     public DrumPuzzlePlayer player1;
     public DrumPuzzlePlayer player2;
 
+	public AudioClip drumFailClip;
+	public AudioClip drumSuccessClip;
+	private AudioSource drumFailSound;
+	private AudioSource drumSuccessSound;
+
     private bool P1_PRESSED;
     private bool P2_PRESSED;
     private SpriteRenderer beat1;
     private SpriteRenderer beat2;
     private Animator drum;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
+	public void Awake() {
+		this.drumFailSound = this.makeAudioSource (this.drumFailClip, 0.8f);
+		this.drumSuccessSound = this.makeAudioSource (this.drumSuccessClip, 0.8f);
+	}
 
     override public void P1_ButA()
     {
@@ -103,6 +122,7 @@ public class DrumPuzzle : Puzzle {
             beatsRemaining--;
             player1.succeed();
             player2.succeed();
+			drumSuccessSound.Play ();
             drum.SetTrigger("Shake");
             if(beatsRemaining == 1)
             {
@@ -117,7 +137,8 @@ public class DrumPuzzle : Puzzle {
         if (player1.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED || player2.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED)
         {
             player1.penalize();
-            player2.penalize();
+			player2.penalize();
+			drumFailSound.Play ();
         }
     }
 
