@@ -392,6 +392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 5
+  kissClip: {fileID: 8300000, guid: b6837f4d3d58c4777b117234e7eed112, type: 3}
+  kissFailClip: {fileID: 8300000, guid: 42ff3bba685f2433fbf4e815234904bc, type: 3}
+  kissFailSound: {fileID: 0}
 --- !u!114 &11491462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,6 +610,14 @@ Prefab:
       propertyPath: timeLimit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: kissClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b6837f4d3d58c4777b117234e7eed112, type: 3}
+    - target: {fileID: 0}
+      propertyPath: kissFailClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 42ff3bba685f2433fbf4e815234904bc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172826}

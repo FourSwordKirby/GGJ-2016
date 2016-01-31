@@ -16,6 +16,25 @@ public class KissPuzzle : Puzzle
     private KissPuzzlePlayer player1;
     private KissPuzzlePlayer player2;
 
+	public AudioClip kissClip;
+	public AudioClip kissFailClip;
+	private AudioSource kissSound;
+	public AudioSource kissFailSound;
+
+	private AudioSource makeAudioSource(AudioClip clip, float volume) {
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = clip;
+		source.loop = false;
+		source.playOnAwake = false;
+		source.volume = volume;
+		return source;
+	}
+
+	public void Awake() {
+		this.kissSound = this.makeAudioSource (this.kissClip, 1.0f);
+		this.kissFailSound = this.makeAudioSource (this.kissFailClip, 1.0f);
+	}
+
     override public void P1_ButA()
     {
         if (player1.playerStatus == KissPuzzlePlayer.PlayerStatus.IDLE)
@@ -108,6 +127,8 @@ public class KissPuzzle : Puzzle
                     {
                         player1.Succeed();
                         player2.Succeed();
+						this.kissSound.Play ();
+						
                         win = true;
                         status = PuzzleStatus.SPECIAL;
                     }
