@@ -805,6 +805,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSequenceLength: 6
   timeLimit: 10
+  dooLowClip: {fileID: 8300000, guid: 6e8c49f1c6e7643eb8180db9a1c37e83, type: 3}
+  dooHighClip: {fileID: 8300000, guid: b52f3c37770db4be184fd0d2b49239fb, type: 3}
 --- !u!114 &11422690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1523,6 +1525,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: dooLowClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e8c49f1c6e7643eb8180db9a1c37e83, type: 3}
+    - target: {fileID: 0}
+      propertyPath: dooHighClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b52f3c37770db4be184fd0d2b49239fb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176052}

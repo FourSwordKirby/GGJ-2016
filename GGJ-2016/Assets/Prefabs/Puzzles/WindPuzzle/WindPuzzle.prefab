@@ -408,6 +408,7 @@ MonoBehaviour:
   fallingPlayer: {fileID: 11475204}
   windPlayer: {fileID: 11483668}
   catcher: {fileID: 122978}
+  windClip: {fileID: 8300000, guid: 2a98141e469b848d38409e6782b5480c, type: 3}
 --- !u!212 &21230294
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -509,6 +510,10 @@ Prefab:
       propertyPath: steeringAbility
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: windClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a98141e469b848d38409e6782b5480c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190036}
