@@ -284,6 +284,8 @@ MonoBehaviour:
   beatsGoal: 2
   player1: {fileID: 11416464}
   player2: {fileID: 11435252}
+  drumFailClip: {fileID: 8300000, guid: 9cfdf539dd35d43738585b3fa53c6f8d, type: 3}
+  drumSuccessClip: {fileID: 8300000, guid: 828ab536982434c7181e478041639fc0, type: 3}
 --- !u!114 &11435252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,13 +472,29 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: drumFailClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9cfdf539dd35d43738585b3fa53c6f8d, type: 3}
+    - target: {fileID: 0}
+      propertyPath: drumSuccessClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 828ab536982434c7181e478041639fc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 102004}

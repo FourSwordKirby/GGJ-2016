@@ -552,6 +552,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e718b59c2ffa384b9fe11cca41fad75, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1 &1920058668 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 134722, guid: cec615c7be57ad94b8d8a88120915749, type: 2}
@@ -630,3 +631,5 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+>>>>>>> 5defbda... resolved merge conflicts
