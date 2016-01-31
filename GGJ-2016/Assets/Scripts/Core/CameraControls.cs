@@ -47,9 +47,6 @@ public class CameraControls : MonoBehaviour {
 
         //Following a target
         //Now follow the target
-        Debug.Log("Offset" + new Vector3(0, 0, Z_OFFSET));
-        Debug.Log("targetting pos" + target.transform.position + new Vector3(0, 0, Z_OFFSET));
-        Debug.Log("my pos" + transform.position);
         if (target != null && transform.position != target.transform.position + new Vector3(0, 0, Z_OFFSET))
         {
             float x = ((target.transform.position + new Vector3(0, 0, Z_OFFSET)) - transform.position).x;

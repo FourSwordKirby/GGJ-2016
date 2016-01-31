@@ -3,6 +3,33 @@ using System.Collections;
 
 public class Controls {
 
+    public static float THRESHOLD = 0.8f;
+
+    public static Parameters.InputDirection GetCardinalDirection(int playerNum)
+    {
+        Vector2 dir = GetDirection(playerNum);
+        if(dir.x > THRESHOLD)
+        {
+            return Parameters.InputDirection.East;
+        }
+        else if (dir.x < -THRESHOLD)
+        {
+            return Parameters.InputDirection.West;
+        }
+        else if (dir.y > THRESHOLD)
+        {
+            return Parameters.InputDirection.North;
+        }
+        else if(dir.y < -THRESHOLD)
+        {
+            return Parameters.InputDirection.South;
+        }
+        else
+        {
+            return Parameters.InputDirection.Stop;
+        }
+    }
+
     public static Vector2 GetDirection(int playerNum)
     {
         float xAxis = 0;

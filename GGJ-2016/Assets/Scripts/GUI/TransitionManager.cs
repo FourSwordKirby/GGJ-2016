@@ -72,15 +72,6 @@ public class TransitionManager : MonoBehaviour {
             }
             transitionTime -= Time.deltaTime;
         }
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            FadeToDark(null);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            FadeToEmpty(null);
-        }
 	}
 
     private void OnLoad()
@@ -106,6 +97,11 @@ public class TransitionManager : MonoBehaviour {
     public void FadeToDark(ResponseFunction onFinish)
     {
         StartTransition("ToDark", 1.0f, onFinish);
+    }
+
+    public void FadeToWhite(ResponseFunction onFinish)
+    {
+        StartTransition("ToWhite", 1.0f, onFinish);
     }
 
     public void ImageIn(ResponseFunction onFinish)
