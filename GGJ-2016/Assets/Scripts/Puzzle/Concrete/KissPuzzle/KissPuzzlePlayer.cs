@@ -4,7 +4,7 @@ using System.Collections;
 public class KissPuzzlePlayer : MonoBehaviour {
     public float penalty;
 
-    private const float PENALTY_DURATION = 2.0f;
+    private const float PENALTY_DURATION = 1.0f;
     private const float PRIME_DURATION = 0.5f;
     private const float START_DURATION = 1.0f;
 

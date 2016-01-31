@@ -31,6 +31,15 @@ public abstract class Puzzle : MonoBehaviour {
     /// </summary>
     abstract public string GetName();
 
+    virtual public string GetP1Instructions()
+    {
+        return "DO THINGS!";
+    }
+    virtual public string GetP2Instructions()
+    {
+        return "DO THINGS!";
+    }
+
     /// <summary>
     /// This should be called exactly once before actually running a puzzle.
     /// This will initialize all variables needed by the puzzle.
