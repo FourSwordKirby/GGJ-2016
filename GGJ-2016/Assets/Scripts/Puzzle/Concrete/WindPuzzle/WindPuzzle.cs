@@ -3,9 +3,10 @@ using System.Collections;
 
 public class WindPuzzle : Puzzle {
 
-   //Need to time it so both players apples land in the basin at the same time
+    private const float CATCHER_RADIUS = 10.0f;
 
     public float timeLimit;
+    private float cameraSize = 6.0f;
     private float timeRemaining;
     private PuzzleStatus status;
 
@@ -16,6 +17,8 @@ public class WindPuzzle : Puzzle {
 
     private CameraControls cam1;
     private CameraControls cam2;
+    private float oldCam1Size;
+    private float oldCam2Size;
 
     override public void P1_Direction(Vector2 dir)
     {
@@ -75,10 +78,24 @@ public class WindPuzzle : Puzzle {
         timeRemaining = timeLimit;
         cam1 = GameObject.Find("P1 Camera").GetComponent<CameraControls>();
         cam1.Target(fallingPlayer.GetTarget());
+        oldCam1Size = cam1.GetComponent<Camera>().orthographicSize;
+        cam1.GetComponent<Camera>().orthographicSize = cameraSize;
         cam2 = GameObject.Find("P2 Camera").GetComponent<CameraControls>();
         cam2.Target(fallingPlayer.GetTarget());
+        oldCam2Size = cam2.GetComponent<Camera>().orthographicSize;
+        cam2.GetComponent<Camera>().orthographicSize = cameraSize;
 
         catcherBounds = catcher.GetComponent<Collider2D>();
+        if(fallingPlayer.assignment == FallerPlayer.PlayerAssignment.P1)
+        {
+            catcher.GetComponentInChildren<SpriteRenderer>().color = fallingPlayer.P2Color;
+        }
+        else
+        {
+            catcher.GetComponentInChildren<SpriteRenderer>().color = fallingPlayer.P1Color;
+        }
+        float newX = catcher.transform.position.x + Random.Range(-CATCHER_RADIUS, CATCHER_RADIUS);
+        catcher.transform.position = new Vector3(newX, catcher.transform.position.y);
     }
 
     /// <summary>
@@ -91,6 +108,8 @@ public class WindPuzzle : Puzzle {
         Time.timeScale = 1.0f;
         cam1.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         cam2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        cam1.GetComponent<Camera>().orthographicSize = oldCam1Size;
+        cam2.GetComponent<Camera>().orthographicSize = oldCam2Size;
     }
 
     /// <summary>

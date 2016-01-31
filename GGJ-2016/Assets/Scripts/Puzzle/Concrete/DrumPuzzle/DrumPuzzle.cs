@@ -16,6 +16,9 @@ public class DrumPuzzle : Puzzle {
 
     private bool P1_PRESSED;
     private bool P2_PRESSED;
+    private SpriteRenderer beat1;
+    private SpriteRenderer beat2;
+    private Animator drum;
 
     override public void P1_ButA()
     {
@@ -72,6 +75,10 @@ public class DrumPuzzle : Puzzle {
         cam2.transform.position = camPosition;
         //Initialize position of players?
         //Initialize some stats?
+
+        beat1 = this.transform.FindChild("beat 1").GetComponent<SpriteRenderer>();
+        beat2 = this.transform.FindChild("beat 2").GetComponent<SpriteRenderer>();
+        drum = this.transform.FindChild("Drum").GetComponent<Animator>();
     }
 
     /// <summary>
@@ -96,6 +103,15 @@ public class DrumPuzzle : Puzzle {
             beatsRemaining--;
             player1.succeed();
             player2.succeed();
+            drum.SetTrigger("Shake");
+            if(beatsRemaining == 1)
+            {
+                beat1.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
+            else if (beatsRemaining == 0)
+            {
+                beat2.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
         }
 
         if (player1.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED || player2.playerStatus == DrumPuzzlePlayer.PlayerStatus.PENALIZED)

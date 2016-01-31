@@ -3,6 +3,9 @@ using System.Collections;
 
 public class FallerPlayer : MonoBehaviour
 {
+    public Color P1Color;
+    public Color P2Color;
+
     public enum PlayerAssignment
     {
         P1,
@@ -31,15 +34,22 @@ public class FallerPlayer : MonoBehaviour
     public Animator anim;
     public Rigidbody2D selfBody;
     public Collider2D colBody;
+    private SpriteRenderer sprite;
+    private SpriteRenderer arrow;
+    private Transform catcher;
 
-    void Awake()
+    void Start()
     {
         this.anim = this.GetComponent<Animator>();
         this.selfBody = this.GetComponent<Rigidbody2D>();
         this.colBody = this.GetComponent<Collider2D>();
+        sprite = this.transform.FindChild("Sprite").GetComponent<SpriteRenderer>();
+        arrow = this.transform.FindChild("Arrow").GetComponent<SpriteRenderer>();
+        catcher = this.transform.parent.FindChild("Catcher").transform;
 
         idealDrag = maxAcceleration / terminalVelocity;
-        selfBody.drag = idealDrag / (idealDrag * Time.fixedDeltaTime + 1);
+        idealDrag = idealDrag / (idealDrag * Time.fixedDeltaTime + 1);
+        selfBody.drag = idealDrag;
     }
 
     public void steer(Vector2 direction)
@@ -59,6 +69,20 @@ public class FallerPlayer : MonoBehaviour
 
     void Update()
     {
+        if(assignment == PlayerAssignment.P1)
+        {
+            sprite.color = P1Color;
+            arrow.color = P2Color;
+        }
+        else
+        {
+            sprite.color = P2Color;
+            arrow.color = P1Color;
+        }
+        Vector3 fakePos = new Vector3(this.transform.position.x, catcher.position.y + 5.0f, 0.0f);
+        Vector3 dir = (catcher.position - fakePos).normalized * 2.0f;
+        arrow.transform.rotation = Quaternion.FromToRotation(Vector3.down, dir.normalized);
+        arrow.transform.position = this.transform.position + dir;
     }
 
     public GameObject GetTarget()

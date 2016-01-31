@@ -1,0 +1,116 @@
+fileFormatVersion: 2
+guid: 48357b5ba1a7bd5429d69e3ce00426a5
+timeCreated: 1454240955
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: notes.ss_0
+    21300002: notes.ss_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: notes.ss_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 167}
+        - {x: 63, y: 192}
+        - {x: 116, y: 235}
+        - {x: 116, y: 247}
+        - {x: 57, y: 247}
+        - {x: -16, y: 245}
+        - {x: -108, y: 231}
+        - {x: -107, y: -106}
+        - {x: -128, y: -100}
+        - {x: -186, y: -123}
+        - {x: -210, y: -148}
+        - {x: -230, y: -184}
+        - {x: -230, y: -233}
+        - {x: -211, y: -256}
+        - {x: -130, y: -256}
+        - {x: -97, y: -245}
+        - {x: -41, y: -175}
+        - {x: -51, y: 163}
+    - name: notes.ss_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 193, y: 252}
+        - {x: 125, y: 252}
+        - {x: 90, y: 244}
+        - {x: 0, y: 199}
+        - {x: -8, y: 179}
+        - {x: -8, y: 166}
+        - {x: -7, y: 166}
+        - {x: 143, y: 182}
+        - {x: 96, y: -44}
+        - {x: 54, y: -81}
+        - {x: 41, y: -145}
+        - {x: 65, y: -169}
+        - {x: 138, y: -169}
+        - {x: 192, y: -138}
+        - {x: 197, y: -94}
+        - {x: 198, y: -35}
+        - {x: 198, y: 250}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
