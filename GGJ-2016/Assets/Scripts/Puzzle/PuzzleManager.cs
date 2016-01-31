@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PuzzleManager : MonoBehaviour {
+public class PuzzleManager : MonoBehaviour
+{
 
     // Prefab links
     /// <summary>
@@ -14,19 +15,21 @@ public class PuzzleManager : MonoBehaviour {
     //Global Progress Properties
     public int puzzleCount;
     public int remainingFailures;
-    private List<Puzzle> puzzlesToComplete = new List<Puzzle>();
-    private int progress;
+    public float breakDuration = 3.0f;
 
     // Internal variables
     private Puzzle currentPuzzle;
     private bool run;
+    private List<Puzzle> puzzlesToComplete = new List<Puzzle>();
+    private int progress;
+    private float breakTime;
 
     // Public properties
     public float TimeRemaining
     {
         get
         {
-            if(currentPuzzle)
+            if (currentPuzzle)
             {
                 return currentPuzzle.GetTimeRemaining();
             }
@@ -37,20 +40,25 @@ public class PuzzleManager : MonoBehaviour {
         }
     }
 
+    // Other object references
+    private UIManager uiManager;
+
     void Awake()
     {
         run = false;
+        breakTime = -1.0f;
     }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         progress = 0;
         if (initialPuzzleIndex >= 0)
         {
-            for (int i = 0; i < remainingFailures + 1; i++ )
+            List<Puzzle> puzzleSet = new List<Puzzle>(puzzlesPrefabs.ToArray());
+            for (int i = 0; i < puzzleCount + remainingFailures; i++)
             {
-                puzzlesToComplete.Add(puzzlesPrefabs[initialPuzzleIndex]);
+                puzzlesToComplete.Add(puzzleSet[initialPuzzleIndex]);
             }
             currentPuzzle = SpawnPuzzle(puzzlesPrefabs[initialPuzzleIndex]);
         }
@@ -68,37 +76,62 @@ public class PuzzleManager : MonoBehaviour {
             currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
         }
 
+        uiManager = GameObject.FindObjectOfType<UIManager>();
+
         Run();
-	}
-	
-	// Update is called once per frame
-	void Update()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	    if(!run)
+        if (!run)
         {
             return;
         }
         GetInputs();
-        currentPuzzle.Execute();
-        if (currentPuzzle.Status() == PuzzleStatus.SUCCESS)
+        if (!IsDone(currentPuzzle.Status()))
         {
-            progress++;
-            currentPuzzle.Cleanup();
-            Destroy(currentPuzzle.gameObject);
-            if(progress < puzzlesToComplete.Count)
-                currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+            uiManager.SetBothTimers(currentPuzzle.GetTimeRemaining());
+            currentPuzzle.Execute();
         }
-        else if(currentPuzzle.Status() == PuzzleStatus.FAIL)
+        else
         {
-            progress++;
-            currentPuzzle.Cleanup();
-            Destroy(currentPuzzle.gameObject);
-            if (progress < puzzlesToComplete.Count)
-                currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
-            remainingFailures--;
+            Debug.Log("Break time");
+            if(breakTime <= 0.0f)
+            {
+                breakTime = breakDuration;
+                if (currentPuzzle.Status() == PuzzleStatus.SUCCESS)
+                {
+                    uiManager.PlaySuccessAnimation();
+                }
+                else
+                {
+                    uiManager.PlayFailAnimation();
+                }
+            }
+            else
+            {
+                breakTime -= Time.deltaTime;
+                if (breakTime <= 0.0f)
+                {
+                    Debug.Log("Next!");
+                    uiManager.ClearResults();
+                    progress++;
+                    currentPuzzle.Cleanup();
+                    Destroy(currentPuzzle.gameObject);
+                    if (progress < puzzlesToComplete.Count)
+                    {
+                        currentPuzzle = SpawnPuzzle(puzzlesToComplete[progress]);
+                    }
+                    if (currentPuzzle.Status() == PuzzleStatus.FAIL)
+                    {
+                        remainingFailures--;
+                    }
+                }
+            }
         }
 
-        if (progress == puzzlesToComplete.Count-remainingFailures)
+        if (progress == puzzlesToComplete.Count - remainingFailures)
         {
             Debug.Log("YOU WIN");
         }
@@ -106,7 +139,7 @@ public class PuzzleManager : MonoBehaviour {
         {
             Debug.Log("YOU LOSE");
         }
-	}
+    }
 
     void FixedUpdate()
     {
@@ -126,16 +159,16 @@ public class PuzzleManager : MonoBehaviour {
     {
         // P2_A is mapped to .
         // P2_B is mapped to /
-        
+
         // P1_A is mapped to F
         // P2_B is mapped to G
 
         // Player 1
-        if(Controls.AInputDown(0))
+        if (Controls.AInputDown(0))
         {
             currentPuzzle.P1_ButA();
         }
-        if(Controls.BInputDown(0))
+        if (Controls.BInputDown(0))
         {
             currentPuzzle.P1_ButB();
         }
@@ -159,5 +192,10 @@ public class PuzzleManager : MonoBehaviour {
         newPuzzle.transform.SetParent(this.transform);
         newPuzzle.Setup();
         return newPuzzle;
+    }
+
+    private bool IsDone(PuzzleStatus status)
+    {
+        return status == PuzzleStatus.SUCCESS || status == PuzzleStatus.FAIL;
     }
 }

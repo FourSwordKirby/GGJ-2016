@@ -5,10 +5,11 @@ public class SeeSawPuzzle : Puzzle {
 
     private const string PUZZLE_NAME = "See Saw Puzzle";
     private const int DIFFICULTY = 1;
-    private const float TIME_LIMIT = 10.0f;
-    private const float PLAYER_SPEED = 6.0f;
+    private const float TIME_LIMIT = 7.0f;
+    private const float PLAYER_SPEED = 12.0f;
     private const float AREA_X_MIN = 1.0f;
     private const float AREA_X_MAX = 3.7f;
+    private const float DEAD_ZONE_Y = -7.0f;
 
     public bool tutorialMode = false;
 
@@ -20,6 +21,7 @@ public class SeeSawPuzzle : Puzzle {
     private Vector3 oldCam1Pos;
     private Vector3 oldCam2Pos;
     private bool good;
+    private bool playerDied;
     private PuzzleStatus status;
 
     private Vector3 camPosition;
@@ -36,6 +38,7 @@ public class SeeSawPuzzle : Puzzle {
     {
         timeRemaining = TIME_LIMIT;
         good = true;
+        playerDied = false;
         status = PuzzleStatus.INPROGRESS;
 
         // Generates the "solution"
@@ -94,6 +97,12 @@ public class SeeSawPuzzle : Puzzle {
         if(timeRemaining >= 0.0f)
         {
             timeRemaining -= Time.deltaTime;
+
+            if(leftBody.position.y < DEAD_ZONE_Y || rightBody.position.y < DEAD_ZONE_Y)
+            {
+                status = PuzzleStatus.FAIL;
+            }
+
             if(timeRemaining < 0.0f)
             {
                 timeRemaining = 0.0f;
@@ -173,5 +182,11 @@ public class SeeSawPuzzle : Puzzle {
     public void GoodState()
     {
         good = true;
+    }
+
+    public void Dead()
+    {
+        good = false;
+        playerDied = true;
     }
 }

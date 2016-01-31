@@ -1,31 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ApplePuzzle : Puzzle {
-
-   //Need to time it so both players apples land in the basin at the same time
+public class KissPuzzle : Puzzle
+{
+   //Need to hit a drum x number of times within some constrained time frame
+   //Every error leads to a small stunned penalty
 
     public float timeLimit;
+
     private float timeRemaining;
-
-    public ApplePuzzlePlayer player1;
-    public ApplePuzzlePlayer player2;
-
-    private bool P1_PRESSED;
-    private bool P2_PRESSED;
-
     private PuzzleStatus status;
+    private bool win;
+
+    private KissPuzzlePlayer player1;
+    private KissPuzzlePlayer player2;
 
     override public void P1_ButA()
     {
-        if(player1.playerStatus == ApplePuzzlePlayer.PlayerStatus.READY)
-            player1.trigger();
+        if (player1.playerStatus == KissPuzzlePlayer.PlayerStatus.IDLE)
+        {
+            player1.Trigger();
+        }
     }
 
     override public void P2_ButA()
     {
-        if (player2.playerStatus == ApplePuzzlePlayer.PlayerStatus.READY)
-            player2.trigger();
+        if (player2.playerStatus == KissPuzzlePlayer.PlayerStatus.IDLE)
+        {
+            player2.Trigger();
+        }
     }
 
     override public float GetTimeRemaining()
@@ -48,7 +51,7 @@ public class ApplePuzzle : Puzzle {
     /// </summary>
     override public string GetName()
     {
-        return "Apples";
+        return "Kiss";
     }
 
     /// <summary>
@@ -59,14 +62,17 @@ public class ApplePuzzle : Puzzle {
     override public void Setup()
     {
         timeRemaining = timeLimit;
+        status = PuzzleStatus.INPROGRESS;
+        win = false;
+
         Vector3 camPosition = this.transform.FindChild("Camera Point").position;
         Camera cam1 = GameObject.Find("P1 Camera").GetComponent<Camera>();
         cam1.transform.position = camPosition;
         Camera cam2 = GameObject.Find("P2 Camera").GetComponent<Camera>();
         cam2.transform.position = camPosition;
-        //Initialize position of players?
-        //Initialize some stats?
-        status = PuzzleStatus.INPROGRESS;
+
+        player1 = this.transform.FindChild("P1").GetComponent<KissPuzzlePlayer>();
+        player2 = this.transform.FindChild("P2").GetComponent<KissPuzzlePlayer>();
     }
 
     /// <summary>
@@ -76,7 +82,7 @@ public class ApplePuzzle : Puzzle {
     /// </summary>
     override public void Cleanup()
     {
-        Debug.Log("puzzle finished, should I ramp up the level of this puzzle?");
+        Debug.Log("Kiss Puzzle done");
     }
 
     /// <summary>
@@ -85,17 +91,40 @@ public class ApplePuzzle : Puzzle {
     /// </summary>
     override public void Execute()
     {
-        if(status == PuzzleStatus.INPROGRESS)
+        switch(status)
         {
-            timeRemaining -= Time.deltaTime;
-            if (player1.playerStatus == ApplePuzzlePlayer.PlayerStatus.PRIMED && player2.playerStatus == ApplePuzzlePlayer.PlayerStatus.PRIMED)
-            {
-                status = PuzzleStatus.SUCCESS;
-            }
-            else if (timeRemaining < 0)
-            {
-                status = PuzzleStatus.FAIL;
-            }
+            case PuzzleStatus.INPROGRESS:
+                timeRemaining -= Time.deltaTime;
+                if(timeRemaining < 0.0f)
+                {
+                    timeRemaining = 0.0f;
+                    status = PuzzleStatus.SPECIAL;
+                }
+                else
+                {
+                    if (player1.playerStatus == KissPuzzlePlayer.PlayerStatus.PRIMED
+                        && player2.playerStatus == KissPuzzlePlayer.PlayerStatus.PRIMED)
+                    {
+                        player1.Succeed();
+                        player2.Succeed();
+                        win = true;
+                        status = PuzzleStatus.SPECIAL;
+                    }
+                }
+                break;
+            case PuzzleStatus.SPECIAL:
+                // Special animation? :P
+                if(win)
+                {
+                    status = PuzzleStatus.SUCCESS;
+                }
+                else
+                {
+                    status = PuzzleStatus.FAIL;
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -120,3 +149,4 @@ public class ApplePuzzle : Puzzle {
         return status;
     }
 }
+

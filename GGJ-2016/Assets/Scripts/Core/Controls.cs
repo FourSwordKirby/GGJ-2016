@@ -8,8 +8,6 @@ public class Controls {
         float xAxis = 0;
         float yAxis = 0;
 
-        Debug.Log(Input.GetAxis("P1 Horizontal"));
-
         if (playerNum == 0)
         {
             xAxis = Input.GetAxis("P1 Horizontal");

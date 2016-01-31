@@ -5,17 +5,32 @@ public class PuzzleUI : MonoBehaviour {
 
     public int PlayerNumber = 1;
 
-    private PuzzleManager manager;
     private Text timerText;
+    private Animator anim;
 
     void Start()
     {
-        manager = GameObject.FindObjectOfType<PuzzleManager>();
         timerText = this.transform.FindChild("TimerUI").GetComponent<Text>();
+        anim = this.transform.FindChild("Result").GetComponent<Animator>();
     }
 
-    void Update()
+    public void SetTime(float time)
     {
-        timerText.text = "" + manager.TimeRemaining;
+        timerText.text = "" + time;
+    }
+
+    public void PlaySuccessAnimation()
+    {
+        anim.SetTrigger("Success");
+    }
+
+    public void PlayFailAnimation()
+    {
+        anim.SetTrigger("Fail");
+    }
+
+    public void StopResultAnimation()
+    {
+        anim.SetTrigger("None");
     }
 }
