@@ -25,7 +25,7 @@ public class ApplePuzzlePlayer : MonoBehaviour {
     {
         apple.Drop();
         this.playerStatus = PlayerStatus.WAITING;
-        //anim.SetTrigger("Release");
+        anim.SetTrigger("Release");
     }
 
     public void succeed()
