@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 11488490, guid: 2979006c2c16c39468ddc4b11b9ebb4b, type: 2}
   - {fileID: 11474550, guid: 4c4207663301fd44397a72bb605debf9, type: 2}
   - {fileID: 11427184, guid: d0ba20c30500af248bfe795bb4a2c7e6, type: 2}
+  - {fileID: 11453378, guid: 235731fb1f295334da6ae780cd461948, type: 2}
   initialPuzzleIndex: -1
   puzzleCount: 10
   remainingFailures: 4

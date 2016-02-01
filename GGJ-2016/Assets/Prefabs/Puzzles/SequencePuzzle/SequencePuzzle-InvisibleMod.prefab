@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalSequenceLength: 6
-  timeLimit: 10
+  timeLimit: 15
   dooLowClip: {fileID: 8300000, guid: 6e8c49f1c6e7643eb8180db9a1c37e83, type: 3}
   dooHighClip: {fileID: 8300000, guid: b52f3c37770db4be184fd0d2b49239fb, type: 3}
 --- !u!114 &11437958
@@ -921,9 +921,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonA: {fileID: 21300000, guid: 7674940dcb2420344889797aeaee6ce8, type: 3}
   ButtonB: {fileID: 21300000, guid: 3c1bc030aaae663489c06fa08c8fb930, type: 3}
-  JoyUp: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d, type: 3}
+  JoyUp: {fileID: 21300000, guid: a2cc0b381199c4543a0631adc05c00db, type: 3}
   JoyRight: {fileID: 21300000, guid: 14b1d78cd63928b4883057f0ee87a4c6, type: 3}
-  JoyDown: {fileID: 21300000, guid: a2cc0b381199c4543a0631adc05c00db, type: 3}
+  JoyDown: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d, type: 3}
   JoyLeft: {fileID: 21300000, guid: 1110288b6faadce44b66f826f9dab288, type: 3}
 --- !u!114 &11465498
 MonoBehaviour:
@@ -975,9 +975,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ButtonA: {fileID: 21300000, guid: 7674940dcb2420344889797aeaee6ce8, type: 3}
   ButtonB: {fileID: 21300000, guid: 3c1bc030aaae663489c06fa08c8fb930, type: 3}
-  JoyUp: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d, type: 3}
+  JoyUp: {fileID: 21300000, guid: a2cc0b381199c4543a0631adc05c00db, type: 3}
   JoyRight: {fileID: 21300000, guid: 14b1d78cd63928b4883057f0ee87a4c6, type: 3}
-  JoyDown: {fileID: 21300000, guid: a2cc0b381199c4543a0631adc05c00db, type: 3}
+  JoyDown: {fileID: 21300000, guid: 0183ee58c44f3424b91c82a929f5e72d, type: 3}
   JoyLeft: {fileID: 21300000, guid: 1110288b6faadce44b66f826f9dab288, type: 3}
 --- !u!114 &11481562
 MonoBehaviour:
@@ -1632,7 +1632,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: timeLimit
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 131330}

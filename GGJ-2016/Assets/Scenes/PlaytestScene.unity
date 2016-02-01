@@ -903,6 +903,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzlesPrefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 497598, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -934,6 +938,19 @@ Prefab:
     - target: {fileID: 497598, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzlesPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 11453378, guid: 235731fb1f295334da6ae780cd461948,
+        type: 2}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: puzzleCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440860, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
+      propertyPath: initialPuzzleIndex
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f02138f06cda5fe42a5b5b3d1ce4775e, type: 2}
