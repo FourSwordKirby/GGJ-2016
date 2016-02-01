@@ -115,7 +115,7 @@ public class MazePuzzle: Puzzle {
         return status;
     }
 
-    private const string INSTRUCTIONS = "Meet UP!";
+    private const string INSTRUCTIONS = "Meet Up!";
     private const string CONTROLS = "LUDR";
 
     public override string GetP1Instructions()
